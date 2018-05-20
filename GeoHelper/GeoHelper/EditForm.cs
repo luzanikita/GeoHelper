@@ -135,39 +135,55 @@ namespace GeoHelper
         // Обработка и изменение введенных данных справочника.
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            try
+            if (radioButtonContinent.Checked &&
+                Validator.ValidContinentComboBox(comboBoxContinent) &&
+                Validator.ValidName(textBoxContinentName))
             {
-                if (radioButtonContinent.Checked)
-                {
-                    Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
-                        .Edit(textBoxContinentName.Text);
-
-                }
-                else if (radioButtonCountry.Checked)
-                {
-                    Main.Helper.ContinentList[comboBoxCountryContinent.SelectedIndex]
-                        .CountryList[comboBoxCountry.SelectedIndex]
-                        .Edit(textBoxCountryName.Text, comboBoxGovForm.Text);
-                }
-                else
-                {
-
-                    Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
-                        .CountryList[comboBoxCityCountry.SelectedIndex]
-                        .CityList[comboBoxCity.SelectedIndex]
-                        .Edit(textBoxCityName.Text,
-                            new double[] { Convert.ToDouble(textBoxLongitude.Text), Convert.ToDouble(textBoxLatitude.Text) },
-                            Convert.ToDouble(textBoxCityArea.Text),
-                            Convert.ToInt32(textBoxCityArea.Text),
-                            checkBoxIsCapital.Checked);
-                }
+                Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]
+                    .Edit(textBoxContinentName.Text);
                 Main.Helper.Update();
                 Main.UpdateInfo();
                 Close();
             }
-            catch(Exception)
+            else if (radioButtonCountry.Checked &&
+                Validator.ValidContinentComboBox(comboBoxCountryContinent) &&
+                Validator.ValidCountryComboBox(comboBoxCountry) &&
+                Validator.ValidName(textBoxCountryName) &&
+                Validator.ValidGovFormComboBox(comboBoxGovForm))
             {
-                MessageBox.Show("Не корректно заполнены поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Main.Helper.ContinentList[comboBoxCountryContinent.SelectedIndex]
+                    .CountryList[comboBoxCountry.SelectedIndex]
+                    .Edit(textBoxCountryName.Text, comboBoxGovForm.Text);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
+            }
+            else if (radioButtonCity.Checked &&
+                Validator.ValidContinentComboBox(comboBoxCityContinent) &&
+                Validator.ValidCountryComboBox(comboBoxCityCountry) &&
+                Validator.ValidCityComboBox(comboBoxCity) &&
+                Validator.ValidName(textBoxCityName) &&
+                Validator.ValidCoordTextBox(textBoxLongitude) &&
+                Validator.ValidCoordTextBox(textBoxLatitude) &&
+                Validator.ValidDoubleField(textBoxCityArea) &&
+                Validator.ValidIntField(textBoxCityPopulation))
+            {
+                double longitude = textBoxLongitude.Text == "" ? 404 : Convert.ToDouble(textBoxLongitude.Text);
+                double latitude = textBoxLatitude.Text == "" ? 404 : Convert.ToDouble(textBoxLatitude.Text);
+                double area = textBoxCityArea.Text == "" ? -1 : Convert.ToDouble(textBoxCityArea.Text);
+                int population = textBoxCityPopulation.Text == "" ? -1 : Convert.ToInt32(textBoxCityPopulation.Text);
+
+                Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
+                    .CountryList[comboBoxCityCountry.SelectedIndex]
+                    .CityList[comboBoxCity.SelectedIndex]
+                    .Edit(textBoxCityName.Text,
+                        new double[] { longitude, latitude},
+                        area,
+                        population,
+                        checkBoxIsCapital.Checked);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
             }
         }
 

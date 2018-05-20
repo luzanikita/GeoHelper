@@ -27,7 +27,8 @@
         public void Edit(string name = "", double[] coordinates = null, double area = -1, int population = -1, bool isCapital = false)
         {
             Name = name == "" ? Name : name;
-            Coordinates = coordinates is null ? Coordinates : coordinates;
+            Coordinates[0] = coordinates[0] == 404 ? Coordinates[0] : coordinates[0];
+            Coordinates[1] = coordinates[1] == 404 ? Coordinates[1] : coordinates[1];
             Area = area == -1 ? Area : area;
             Population = population == -1 ? Population : population;
             IsCapital = isCapital;

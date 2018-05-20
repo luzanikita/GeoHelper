@@ -39,46 +39,52 @@ namespace GeoHelper
         // Привязка данных о странах.
         private void UpdateCountryInfo()
         {
-            if (Main.Helper
-                    .ContinentList.Count > 0 && 
-                Main.Helper
-                    .ContinentList[comboBoxContinent.SelectedIndex]
-                    .CountryList.Count > 0)
+            if (radioButtonCountry.Checked || radioButtonCity.Checked)
             {
-                comboBoxCountry.DataSource = new List<Country> { };
-                comboBoxCountry.DataSource = Main.Helper
-                    .ContinentList[comboBoxContinent.SelectedIndex]
-                    .CountryList;
-                UpdateCityInfo();
-            }
-            else
-            {
-                comboBoxCountry.DataSource = new List<Country> { };
-                comboBoxCountry.Text = "";
-                comboBoxCity.DataSource = new List<City> { };
-                comboBoxCity.Text = "";
+                if (Main.Helper
+                        .ContinentList.Count > 0 &&
+                    Main.Helper
+                        .ContinentList[comboBoxContinent.SelectedIndex]
+                        .CountryList.Count > 0)
+                {
+                    comboBoxCountry.DataSource = new List<Country> { };
+                    comboBoxCountry.DataSource = Main.Helper
+                        .ContinentList[comboBoxContinent.SelectedIndex]
+                        .CountryList;
+                    UpdateCityInfo();
+                }
+                else
+                {
+                    comboBoxCountry.DataSource = new List<Country> { };
+                    comboBoxCountry.Text = "";
+                    comboBoxCity.DataSource = new List<City> { };
+                    comboBoxCity.Text = "";
+                }
             }
         }
 
         // Привязка данных о городах.
         private void UpdateCityInfo()
         {
-            if (Main.Helper
-                    .ContinentList[comboBoxContinent.SelectedIndex]
-                    .CountryList[comboBoxCountry.SelectedIndex]
-                    .CityList.Count > 0)
+            if (radioButtonCity.Checked)
             {
-                comboBoxCity.DataSource = new List<City> { };
-                comboBoxCity.DataSource = Main.Helper
-                    .ContinentList[comboBoxContinent.SelectedIndex]
-                    .CountryList[comboBoxCountry.SelectedIndex]
-                    .CityList;
+                if (Main.Helper
+                        .ContinentList[comboBoxContinent.SelectedIndex]
+                        .CountryList[comboBoxCountry.SelectedIndex]
+                        .CityList.Count > 0)
+                {
+                    comboBoxCity.DataSource = new List<City> { };
+                    comboBoxCity.DataSource = Main.Helper
+                        .ContinentList[comboBoxContinent.SelectedIndex]
+                        .CountryList[comboBoxCountry.SelectedIndex]
+                        .CityList;
+                }
+                else
+                {
+                    comboBoxCity.DataSource = new List<City> { };
+                    comboBoxCity.Text = "";
+                }
             }
-            else
-            {
-                comboBoxCity.DataSource = new List<City> { };
-                comboBoxCity.Text = "";
-            } 
         }
 
         // Изменение списка стран, при выборе соответствующего континента.
@@ -96,43 +102,65 @@ namespace GeoHelper
         // Обработка и удаление введенных данных из справочника.
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            try
+            if (radioButtonContinent.Checked && Validator.ValidContinentComboBox(comboBoxContinent))
             {
-                if (radioButtonContinent.Checked)
-                {
-                
-                        Main.Helper.Remove(Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]);
-                        Main.Helper.Update();
-                        Main.UpdateInfo();
-                        Close();
-                }
-                else if(radioButtonCountry.Checked)
-                {
-                    Main.Helper.ContinentList[comboBoxContinent.SelectedIndex].Remove(Main.Helper
-                        .ContinentList[comboBoxContinent.SelectedIndex]
-                        .CountryList[comboBoxCountry.SelectedIndex]);
-                    Main.Helper.Update();
-                    Main.UpdateInfo();
-                    Close();
-                }
-                else if (radioButtonCity.Checked)
-                {
-                    Main.Helper
+                Main.Helper.Remove(Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
+            }
+            else if(radioButtonCountry.Checked &&
+                Validator.ValidContinentComboBox(comboBoxContinent) &&
+                Validator.ValidCountryComboBox(comboBoxCountry))
+            {
+                Main.Helper.ContinentList[comboBoxContinent.SelectedIndex].Remove(Main.Helper
+                    .ContinentList[comboBoxContinent.SelectedIndex]
+                    .CountryList[comboBoxCountry.SelectedIndex]);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
+            }
+            else if (radioButtonCity.Checked &&
+                Validator.ValidContinentComboBox(comboBoxContinent) &&
+                Validator.ValidCountryComboBox(comboBoxCountry) &&
+                Validator.ValidCityComboBox(comboBoxCity))
+            {
+                Main.Helper
+                    .ContinentList[comboBoxContinent.SelectedIndex]
+                    .CountryList[comboBoxCountry.SelectedIndex]
+                    .CityList.Remove(Main.Helper
                         .ContinentList[comboBoxContinent.SelectedIndex]
                         .CountryList[comboBoxCountry.SelectedIndex]
-                        .CityList.Remove(Main.Helper
-                            .ContinentList[comboBoxContinent.SelectedIndex]
-                            .CountryList[comboBoxCountry.SelectedIndex]
-                            .CityList[comboBoxCity.SelectedIndex]);
-                    Main.Helper.Update();
-                    Main.UpdateInfo();
-                    Close();
-                }
+                        .CityList[comboBoxCity.SelectedIndex]);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Введенного элемента не существет!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        }
+
+
+        private void radioButtonCountry_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxCity.Visible = false;
+            comboBoxCountry.Visible = true;
+            labelCity.Visible = false;
+            labelCountry.Visible = true;
+        }
+
+        private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxCity.Visible = true;
+            comboBoxCountry.Visible = true;
+            labelCity.Visible = true;
+            labelCountry.Visible = true;
+        }
+
+        private void radioButtonContinent_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxCity.Visible = false;
+            comboBoxCountry.Visible = false;
+            labelCity.Visible = false;
+            labelCountry.Visible = false;
         }
     }
 }

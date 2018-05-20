@@ -63,34 +63,46 @@ namespace GeoHelper
         // Обработка и добавление в справочник введенных данных.
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            try
+            if (radioButtonContinent.Checked &&
+                Validator.ValidName(textBoxContinentName, true))
             {
-                if (radioButtonContinent.Checked)
-                {
-                    Main.Helper.Add(textBoxContinentName.Text);
-                }
-                else if (radioButtonCountry.Checked)
-                {
-                    Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]
-                        .Add(textBoxCountryName.Text, comboBoxGovForm.Text);
-                }
-                else
-                {
-                    Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
-                        .CountryList[comboBoxCountry.SelectedIndex]
-                        .Add(textBoxCityName.Text,
-                            new double[] { Convert.ToDouble(textBoxLongitude.Text), Convert.ToDouble(textBoxLatitude.Text) },
-                            Convert.ToDouble(textBoxCityArea.Text),
-                            Convert.ToInt32(textBoxCityArea.Text),
-                            checkBoxIsCapital.Checked);
-                }
+                Main.Helper.Add(textBoxContinentName.Text);
                 Main.Helper.Update();
                 Main.UpdateInfo();
                 Close();
             }
-            catch (Exception)
+            else if (radioButtonCountry.Checked &&
+                Validator.ValidContinentComboBox(comboBoxContinent) &&
+                Validator.ValidName(textBoxCountryName, true) &&
+                Validator.ValidGovFormComboBox(comboBoxGovForm))
             {
-                MessageBox.Show("Не корректно заполнены поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]
+                    .Add(textBoxCountryName.Text, comboBoxGovForm.Text);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
+            }
+            else if(radioButtonCity.Checked &&
+                Validator.ValidContinentComboBox(comboBoxCityContinent) &&
+                Validator.ValidCountryComboBox(comboBoxCountry) &&
+                Validator.ValidName(textBoxCityName, true) &&
+                Validator.ValidDoubleField(textBoxCityArea, true) &&
+                Validator.ValidIntField(textBoxCityPopulation, true) &&
+                Validator.ValidCoordTextBox(textBoxLongitude, true) &&
+                Validator.ValidCoordTextBox(textBoxLatitude, true)
+                )
+            {
+                Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
+                    .CountryList[comboBoxCountry.SelectedIndex]
+                    .Add(textBoxCityName.Text,
+                        new double[] { Convert.ToDouble(textBoxLongitude.Text),
+                            Convert.ToDouble(textBoxLatitude.Text) },
+                        Convert.ToDouble(textBoxCityArea.Text),
+                        Convert.ToInt32(textBoxCityPopulation.Text),
+                        checkBoxIsCapital.Checked);
+                Main.Helper.Update();
+                Main.UpdateInfo();
+                Close();
             }
         }
 
