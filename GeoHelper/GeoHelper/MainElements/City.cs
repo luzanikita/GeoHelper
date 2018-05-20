@@ -1,26 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeoHelper
+﻿namespace GeoHelper
 {
-    class City
+    // Класс описывающий элемент типа города.
+    public class City
     {
+        // Название города.
         public string Name { get; private set; }
+        // Координаты города.
         public double[] Coordinates { get; private set; }
+        // Площадь города.
         public double Area { get; private set; }
+        // Количество населения города.
         public int Population { get; private set; }
+        // Является ли город столицей.
         public bool IsCapital { get; private set; }
 
-        public City(string name, double x, double y, double area, int population, bool setCapital)
+        public City(string name, double[] coordinates, double area, int population, bool isCapital)
         {
             Name = name;
-            Coordinates = new double[] { x, y };
+            Coordinates = coordinates;
             Area = area;
             Population = population;
-            IsCapital = setCapital;
+            IsCapital = isCapital;
+        }
+
+        // Изменения полей обьекта, если параметры не были указаны, то изменение не происходит. 
+        public void Edit(string name = "", double[] coordinates = null, double area = -1, int population = -1, bool isCapital = false)
+        {
+            Name = name == "" ? Name : name;
+            Coordinates = coordinates is null ? Coordinates : coordinates;
+            Area = area == -1 ? Area : area;
+            Population = population == -1 ? Population : population;
+            IsCapital = isCapital;
         }
     }
 }

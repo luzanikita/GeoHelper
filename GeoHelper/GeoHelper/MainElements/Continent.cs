@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeoHelper
 {
-    class Continent
+    // Класс описывающий элемент типа континента.
+    public class Continent
     {
+        // Название континента.
         public string Name { get; private set; }
+        // Площадь континента.
         public double Area { get; private set; }
+        // Количество населения континента.
         public int Population { get; private set; }
+        // Список стран, которые относятся к этому континенту.
         public List<Country> CountryList { private set; get; }
 
         public Continent(string name)
@@ -19,6 +21,7 @@ namespace GeoHelper
             CountryList = new List<Country> { };
         }
 
+        // Обновить значения площади и населения, посчитав сумму площадей и населения стран этого континета.
         public void Update()
         {
             Area = 0;
@@ -31,15 +34,23 @@ namespace GeoHelper
             }
         }
 
-        public void Add(string name, GovernmentForm gov)
+        // Добавить в список стран этого континента новую страну.
+        public void Add(string name, string government)
         {
-            CountryList.Add(new Country(name, gov));
+            CountryList.Add(new Country(name, government));
         }
 
+        // Удалить из списка стран этого континента указанную страну.
         public Country Remove(Country country)
         {
             CountryList.Remove(country);
             return country;
+        }
+
+        // Изменить название континента, если параметры не заданы, то не изменять.
+        public void Edit(string name = "")
+        {
+            Name = name == "" ? Name : name;
         }
     }
 }

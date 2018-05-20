@@ -22,3 +22,7 @@ E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.MainForm.resources
 E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.Properties.Resources.resources
 E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.GenerateResource.Cache
 E:\GeoHelper\GeoHelper\Data\GeoHelper.exe.config
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.AddForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.DeleteForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.ExitForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.EditForm.resources
