@@ -91,15 +91,23 @@
             this.pictureBoxMarker = new System.Windows.Forms.PictureBox();
             this.pictureBoxMap = new System.Windows.Forms.PictureBox();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.radioButtonAphaSort = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.radioButtonPopualtionSort = new System.Windows.Forms.RadioButton();
-            this.label22 = new System.Windows.Forms.Label();
-            this.radioButtonAreaSort = new System.Windows.Forms.RadioButton();
-            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
+            this.buttonFilterOff = new System.Windows.Forms.Button();
+            this.buttonFilterOn = new System.Windows.Forms.Button();
+            this.groupBoxFilter = new System.Windows.Forms.GroupBox();
+            this.textBoxMaxArea = new System.Windows.Forms.TextBox();
+            this.textBoxMaxPopulation = new System.Windows.Forms.TextBox();
+            this.comboBoxGeoType = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBoxMinArea = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxMinPopulation = new System.Windows.Forms.TextBox();
+            this.comboBoxSort = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBoxNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.continentListBindingSource)).BeginInit();
@@ -116,7 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMarker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
             this.groupBoxFilters.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -619,7 +627,7 @@
             // 
             this.radioButtonContinent.AutoSize = true;
             this.radioButtonContinent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonContinent.Location = new System.Drawing.Point(35, 43);
+            this.radioButtonContinent.Location = new System.Drawing.Point(39, 43);
             this.radioButtonContinent.Name = "radioButtonContinent";
             this.radioButtonContinent.Size = new System.Drawing.Size(14, 13);
             this.radioButtonContinent.TabIndex = 0;
@@ -703,110 +711,182 @@
             // groupBoxFilters
             // 
             this.groupBoxFilters.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.groupBoxFilters.Controls.Add(this.groupBox1);
-            this.groupBoxFilters.Controls.Add(this.checkBoxFilter);
+            this.groupBoxFilters.Controls.Add(this.buttonFilterOff);
+            this.groupBoxFilters.Controls.Add(this.buttonFilterOn);
+            this.groupBoxFilters.Controls.Add(this.groupBoxFilter);
             this.groupBoxFilters.Location = new System.Drawing.Point(599, 348);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(299, 187);
+            this.groupBoxFilters.Size = new System.Drawing.Size(299, 246);
             this.groupBoxFilters.TabIndex = 4;
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Фильтры";
             // 
-            // groupBox1
+            // buttonFilterOff
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.radioButtonAphaSort);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.radioButtonPopualtionSort);
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.radioButtonAreaSort);
-            this.groupBox1.Location = new System.Drawing.Point(15, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(271, 109);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
+            this.buttonFilterOff.Location = new System.Drawing.Point(159, 205);
+            this.buttonFilterOff.Name = "buttonFilterOff";
+            this.buttonFilterOff.Size = new System.Drawing.Size(128, 34);
+            this.buttonFilterOff.TabIndex = 8;
+            this.buttonFilterOff.Text = "Сбросить";
+            this.buttonFilterOff.UseVisualStyleBackColor = true;
+            this.buttonFilterOff.Click += new System.EventHandler(this.buttonFilterOff_Click);
             // 
-            // label12
+            // buttonFilterOn
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(135, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Сортировать по площади";
+            this.buttonFilterOn.Location = new System.Drawing.Point(15, 205);
+            this.buttonFilterOn.Name = "buttonFilterOn";
+            this.buttonFilterOn.Size = new System.Drawing.Size(128, 34);
+            this.buttonFilterOn.TabIndex = 7;
+            this.buttonFilterOn.Text = "Применить";
+            this.buttonFilterOn.UseVisualStyleBackColor = true;
+            this.buttonFilterOn.Click += new System.EventHandler(this.buttonFilterOn_Click);
             // 
-            // radioButtonAphaSort
+            // groupBoxFilter
             // 
-            this.radioButtonAphaSort.AutoSize = true;
-            this.radioButtonAphaSort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonAphaSort.Location = new System.Drawing.Point(172, 73);
-            this.radioButtonAphaSort.Name = "radioButtonAphaSort";
-            this.radioButtonAphaSort.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonAphaSort.TabIndex = 38;
-            this.radioButtonAphaSort.UseVisualStyleBackColor = true;
-            this.radioButtonAphaSort.CheckedChanged += new System.EventHandler(this.radioButtonAphaSort_CheckedChanged);
+            this.groupBoxFilter.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBoxFilter.Controls.Add(this.textBoxMaxArea);
+            this.groupBoxFilter.Controls.Add(this.textBoxMaxPopulation);
+            this.groupBoxFilter.Controls.Add(this.comboBoxGeoType);
+            this.groupBoxFilter.Controls.Add(this.label21);
+            this.groupBoxFilter.Controls.Add(this.label18);
+            this.groupBoxFilter.Controls.Add(this.label19);
+            this.groupBoxFilter.Controls.Add(this.label20);
+            this.groupBoxFilter.Controls.Add(this.textBoxMinArea);
+            this.groupBoxFilter.Controls.Add(this.label17);
+            this.groupBoxFilter.Controls.Add(this.label16);
+            this.groupBoxFilter.Controls.Add(this.label15);
+            this.groupBoxFilter.Controls.Add(this.textBoxMinPopulation);
+            this.groupBoxFilter.Controls.Add(this.comboBoxSort);
+            this.groupBoxFilter.Controls.Add(this.label12);
+            this.groupBoxFilter.Location = new System.Drawing.Point(15, 22);
+            this.groupBoxFilter.Name = "groupBoxFilter";
+            this.groupBoxFilter.Size = new System.Drawing.Size(271, 177);
+            this.groupBoxFilter.TabIndex = 40;
+            this.groupBoxFilter.TabStop = false;
             // 
-            // label15
+            // textBoxMaxArea
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(20, 45);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(146, 13);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Сортировать по населению";
+            this.textBoxMaxArea.Location = new System.Drawing.Point(202, 130);
+            this.textBoxMaxArea.Name = "textBoxMaxArea";
+            this.textBoxMaxArea.Size = new System.Drawing.Size(63, 20);
+            this.textBoxMaxArea.TabIndex = 6;
             // 
-            // radioButtonPopualtionSort
+            // textBoxMaxPopulation
             // 
-            this.radioButtonPopualtionSort.AutoSize = true;
-            this.radioButtonPopualtionSort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonPopualtionSort.Location = new System.Drawing.Point(172, 45);
-            this.radioButtonPopualtionSort.Name = "radioButtonPopualtionSort";
-            this.radioButtonPopualtionSort.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonPopualtionSort.TabIndex = 37;
-            this.radioButtonPopualtionSort.UseVisualStyleBackColor = true;
-            this.radioButtonPopualtionSort.CheckedChanged += new System.EventHandler(this.radioButtonPopualtionSort_CheckedChanged);
+            this.textBoxMaxPopulation.Location = new System.Drawing.Point(202, 95);
+            this.textBoxMaxPopulation.Name = "textBoxMaxPopulation";
+            this.textBoxMaxPopulation.Size = new System.Drawing.Size(63, 20);
+            this.textBoxMaxPopulation.TabIndex = 4;
             // 
-            // label22
+            // comboBoxGeoType
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(20, 73);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(138, 13);
-            this.label22.TabIndex = 11;
-            this.label22.Text = "Сортировать по алфавиту";
+            this.comboBoxGeoType.FormattingEnabled = true;
+            this.comboBoxGeoType.Items.AddRange(new object[] {
+            "Континент",
+            "Страна",
+            "Город"});
+            this.comboBoxGeoType.Location = new System.Drawing.Point(105, 59);
+            this.comboBoxGeoType.Name = "comboBoxGeoType";
+            this.comboBoxGeoType.Size = new System.Drawing.Size(160, 21);
+            this.comboBoxGeoType.TabIndex = 2;
             // 
-            // radioButtonAreaSort
+            // label21
             // 
-            this.radioButtonAreaSort.AutoSize = true;
-            this.radioButtonAreaSort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonAreaSort.Location = new System.Drawing.Point(172, 16);
-            this.radioButtonAreaSort.Name = "radioButtonAreaSort";
-            this.radioButtonAreaSort.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonAreaSort.TabIndex = 36;
-            this.radioButtonAreaSort.UseVisualStyleBackColor = true;
-            this.radioButtonAreaSort.CheckedChanged += new System.EventHandler(this.radioButtonAreaSort_CheckedChanged);
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(11, 62);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 13);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Фильтры для ";
             // 
-            // checkBoxFilter
+            // label18
             // 
-            this.checkBoxFilter.AutoSize = true;
-            this.checkBoxFilter.Location = new System.Drawing.Point(98, 151);
-            this.checkBoxFilter.Name = "checkBoxFilter";
-            this.checkBoxFilter.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxFilter.TabIndex = 39;
-            this.checkBoxFilter.Text = "Применить";
-            this.checkBoxFilter.UseVisualStyleBackColor = true;
-            this.checkBoxFilter.CheckedChanged += new System.EventHandler(this.checkBoxFilter_CheckedChanged);
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(178, 133);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(19, 13);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "до";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(80, 133);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(18, 13);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "от";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(11, 133);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(54, 13);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Площадь";
+            // 
+            // textBoxMinArea
+            // 
+            this.textBoxMinArea.Location = new System.Drawing.Point(105, 130);
+            this.textBoxMinArea.Name = "textBoxMinArea";
+            this.textBoxMinArea.Size = new System.Drawing.Size(63, 20);
+            this.textBoxMinArea.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(179, 98);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(19, 13);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "до";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.SystemColors.Info;
-            this.label16.Location = new System.Drawing.Point(676, 557);
+            this.label16.Location = new System.Drawing.Point(81, 98);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(144, 13);
+            this.label16.Size = new System.Drawing.Size(18, 13);
             this.label16.TabIndex = 5;
-            this.label16.Text = "Лузан М.О. ПЗПІ-17-5 2018";
+            this.label16.Text = "от";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 98);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Население";
+            // 
+            // textBoxMinPopulation
+            // 
+            this.textBoxMinPopulation.Location = new System.Drawing.Point(105, 95);
+            this.textBoxMinPopulation.Name = "textBoxMinPopulation";
+            this.textBoxMinPopulation.Size = new System.Drawing.Size(63, 20);
+            this.textBoxMinPopulation.TabIndex = 3;
+            // 
+            // comboBoxSort
+            // 
+            this.comboBoxSort.FormattingEnabled = true;
+            this.comboBoxSort.Items.AddRange(new object[] {
+            "Алфавит",
+            "Площадь",
+            "Население"});
+            this.comboBoxSort.Location = new System.Drawing.Point(105, 23);
+            this.comboBoxSort.Name = "comboBoxSort";
+            this.comboBoxSort.Size = new System.Drawing.Size(160, 21);
+            this.comboBoxSort.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(11, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(87, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Сортировать по";
             // 
             // MainForm
             // 
@@ -815,7 +895,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(910, 606);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.groupBoxFilters);
             this.Controls.Add(this.groupBoxMap);
             this.Controls.Add(this.groupBoxNavigation);
@@ -853,9 +932,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMarker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
             this.groupBoxFilters.ResumeLayout(false);
-            this.groupBoxFilters.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxFilter.ResumeLayout(false);
+            this.groupBoxFilter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -918,7 +996,6 @@
         private System.Windows.Forms.PictureBox pictureBoxMap;
         private System.Windows.Forms.PictureBox pictureBoxMarker;
         private System.Windows.Forms.GroupBox groupBoxFilters;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
@@ -926,13 +1003,22 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonAphaSort;
-        private System.Windows.Forms.RadioButton radioButtonPopualtionSort;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.RadioButton radioButtonAreaSort;
-        private System.Windows.Forms.CheckBox checkBoxFilter;
+        private System.Windows.Forms.GroupBox groupBoxFilter;
+        private System.Windows.Forms.ComboBox comboBoxSort;
+        private System.Windows.Forms.TextBox textBoxMaxArea;
+        private System.Windows.Forms.TextBox textBoxMaxPopulation;
+        private System.Windows.Forms.ComboBox comboBoxGeoType;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBoxMinArea;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxMinPopulation;
+        private System.Windows.Forms.Button buttonFilterOff;
+        private System.Windows.Forms.Button buttonFilterOn;
     }
 }
 

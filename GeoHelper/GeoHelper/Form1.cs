@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GeoHelper
@@ -10,10 +11,12 @@ namespace GeoHelper
     {
         // Ссылка на справочник.
         public Companion Helper { get; set; }
+        private bool Filter { get; set; }
         public MainForm()
         {
             InitializeComponent();
             Helper = new Companion();
+            Filter = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,90 +27,118 @@ namespace GeoHelper
         // Обновление источников данных элементов формы и отображение информации о выбраных элементах.
         public void UpdateInfo()
         {
-                Continent continent = UpdateContinentInfo();
-                Country country = UpdateCountryInfo(continent);
-                UpdateCityInfo(continent, country);
+            UpdateContinentSource();
         }
 
         // Обновление информации о континентах.
-        public Continent UpdateContinentInfo()
+        public void UpdateContinentInfo(Continent continent)
+        {
+            if(continent is null)
+            {
+                continentName.Text = "-";
+                continentArea.Text = "-";
+                continentPopulation.Text = "-";
+            }
+            else
+            {
+                continentName.Text = continent.Name;
+                continentArea.Text = $"{continent.Area} км²";
+                continentPopulation.Text = $"{continent.Population} чел.";
+            }
+        }
+
+        public void UpdateContinentSource()
         {
             listBoxContinent.DataSource = new List<Continent> { };
 
             if (Helper.ContinentList.Count > 0)
             {
-                if (checkBoxFilter.Checked)
+                if (Filter)
                 {
-                    if (radioButtonAphaSort.Checked)
+                    if (comboBoxSort.Text == "Алфавит")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
-                    else if (radioButtonAreaSort.Checked)
+                    else if (comboBoxSort.Text == "Площадь")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
-                    else if (radioButtonPopualtionSort.Checked)
+                    else if (comboBoxSort.Text == "Население")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
                 }
-
-                listBoxContinent.DataSource = Helper.ContinentList;
-                Continent continent = Helper.ContinentList[listBoxContinent.SelectedIndex];
-                continentName.Text = continent.Name;
-                continentArea.Text = $"{continent.Area} км²";
-                continentPopulation.Text = $"{continent.Population} чел.";
-
-                return continent;
+                listBoxContinent.DataSource = (Filter && comboBoxGeoType.Text == "Континент") ?
+                    ContinentFilter() : Helper.ContinentList;
+                if (listBoxContinent.Items.Count > 0)
+                    listBoxContinent.SelectedIndex = 0;
+                else
+                {
+                    UpdateContinentInfo(null);
+                    UpdateCountrySource(null);
+                }
             }
-
-            return null;
+            else
+            {
+                UpdateContinentInfo(null);
+                UpdateCountrySource(null);
+            }
         }
 
         // Обновление информации о странах.
-        public Country UpdateCountryInfo(Continent continent)
+        public void UpdateCountryInfo(Country country)
+        {
+            if (country is null)
+            {
+                countryName.Text = "-";
+                countryCapital.Text = "-";
+                countryArea.Text = "-";
+                countryPopulation.Text = "-";
+                countryGovernment.Text = "-";
+            }
+            else
+            {
+                countryName.Text = country.Name != null ? country.Name : "-";
+                countryCapital.Text = country.Capital != null ? country.Capital.Name : "-";
+                countryArea.Text = $"{country.Area} км²";
+                countryPopulation.Text = $"{country.Population} чел.";
+                countryGovernment.Text = country.Government;
+            }
+                
+        }
+
+        public void UpdateCountrySource(Continent continent)
         {
             listBoxCountry.DataSource = new List<Country> { };
 
             if (continent != null && continent.CountryList.Count > 0)
             {
-                if (checkBoxFilter.Checked)
+                if (Filter)
                 {
-                    if (radioButtonAphaSort.Checked)
-                        continent.CountryList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
-                    else if (radioButtonAreaSort.Checked)
-                        continent.CountryList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
-                    else if (radioButtonPopualtionSort.Checked)
-                        continent.CountryList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
+                    if (comboBoxSort.Text == "Алфавит")
+                        Helper.ContinentList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
+                    else if (comboBoxSort.Text == "Площадь")
+                        Helper.ContinentList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
+                    else if (comboBoxSort.Text == "Население")
+                        Helper.ContinentList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
                 }
-
-                listBoxCountry.DataSource = continent.CountryList;
-                Country country = continent.CountryList[listBoxCountry.SelectedIndex];
-                countryName.Text = country.Name;
-                countryCapital.Text = country.Capital != null ? country.Capital.Name : "-";
-                countryArea.Text = $"{country.Area} км²";
-                countryPopulation.Text = $"{country.Population} чел.";
-                countryGovernment.Text = country.Government;
-
-                return country;
+                
+                listBoxCountry.DataSource = (Filter && comboBoxGeoType.Text == "Страна") ?
+                    CountryFilter(continent) : continent.CountryList;
+                if(listBoxCountry.Items.Count > 0)
+                    listBoxCountry.SelectedIndex = 0;
+                else
+                {
+                    UpdateCountryInfo(null);
+                    UpdateCitySource(null);
+                }
             }
-
-            return null;  
+            else
+            {
+                UpdateCountryInfo(null);
+                UpdateCitySource(null);
+            }
         }
 
         // Обновление информации о городах.
-        public void UpdateCityInfo(Continent continent, Country country)
+        public void UpdateCityInfo(City city)
         {
-            listBoxCity.DataSource = new List<City> { };
-
-            if (continent != null && country != null && country.CityList.Count > 0)
-            {
-                if (checkBoxFilter.Checked)
-                {
-                    if (radioButtonAphaSort.Checked)
-                        country.CityList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
-                    if (radioButtonAreaSort.Checked)
-                        country.CityList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
-                    if (radioButtonPopualtionSort.Checked)
-                        country.CityList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
-                }
-
-                listBoxCity.DataSource = country.CityList;
-                City city = country.CityList[listBoxCity.SelectedIndex];
+            if(city != null)
+            { 
                 cityName.Text = city.Name;
                 string longitude = city.Coordinates[0] > 0 ? "з.д." : "в.д.";
                 string latitude = city.Coordinates[1] > 0 ? "с.ш." : "ю.ш.";
@@ -138,6 +169,33 @@ namespace GeoHelper
             
         }
 
+        public void UpdateCitySource(Country country)
+        {
+            listBoxCity.DataSource = new List<City> { };
+
+            if (country != null && country.CityList.Count > 0)
+            {
+                if (Filter)
+                {
+                    if (comboBoxSort.Text == "Алфавит")
+                        Helper.ContinentList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
+                    else if (comboBoxSort.Text == "Площадь")
+                        Helper.ContinentList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
+                    else if (comboBoxSort.Text == "Население")
+                        Helper.ContinentList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
+                }
+
+                listBoxCity.DataSource = (Filter && comboBoxGeoType.Text == "Город") ?
+                    CityFilter(country) : country.CityList;
+                if(listBoxCity.Items.Count > 0)
+                    listBoxCity.SelectedIndex = 0;
+                else
+                    UpdateCityInfo(null);
+            }
+            else
+                UpdateCityInfo(null);
+        }
+
         // Отображение панели с информацией о городе.
         private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
         {
@@ -162,67 +220,82 @@ namespace GeoHelper
             groupBoxContinentInfo.Visible = true;
         }
 
+        // Выбор файла для сохранения.
+        private void SaveFile()
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            string path = Path.GetFullPath("x");
+            path = path.Substring(0, path.Length - 11) + "Data";
+            save.Filter = "json files (*.json)|*.json";
+            save.InitialDirectory = path;
+            DialogResult res = save.ShowDialog();
+            save.FileName =  res == DialogResult.Cancel ? path + @"\default.json" : save.FileName;
+            Helper.Save(save.FileName);
+            save.RestoreDirectory = false;
+        }
+       
+        // Сохранить информацию.
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Helper.Save("save_1");
-        }
-
-        // Применит фильтры и обновить информацию.
-        private void checkBoxFilter_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateInfo();
+            SaveFile();
         }
 
         // Изменение отображения информации при выборе континента.
         private void listBoxContinent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateInfo();
+            if(listBoxContinent.Items.Count > 0)
+            {
+                UpdateContinentInfo((Continent)(listBoxContinent.Items[listBoxContinent.SelectedIndex]));
+                UpdateCountrySource((Continent)(listBoxContinent.Items[listBoxContinent.SelectedIndex]));
+            }
+            else
+            {
+                UpdateContinentInfo(null);
+                UpdateCountrySource(null);
+            }
         }
 
         // Изменение отображения информации при выборе города.
         private void listBoxCity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateInfo();
+            if (listBoxCity.Items.Count > 0)
+            {
+                UpdateCityInfo((City)(listBoxCity.Items[listBoxCity.SelectedIndex]));
+            }
+            else
+            {
+                UpdateCityInfo(null);
+            }
+            
         }
 
         // Изменение отображения информации при выборе страны.
         private void listBoxCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateInfo();
-        }
-
-        // Изменение фильтров на сортировку по площади.
-        private void radioButtonAreaSort_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkBoxFilter.Checked)
-                UpdateInfo();
-        }
-
-        // Изменение фильтров на сортировку по количеству населения.
-        private void radioButtonPopualtionSort_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxFilter.Checked)
-                UpdateInfo();
-        }
-
-        // Изменение фильтров на сортировку по алфавиту.
-        private void radioButtonAphaSort_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxFilter.Checked)
-                UpdateInfo();
-        }
-
-        // Открыть форму добавления новых элементов в справочник.
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddForm addForm = new AddForm(this);
-            addForm.ShowDialog();
+            if(listBoxCountry.Items.Count > 0)
+            {
+                UpdateCountryInfo((Country)(listBoxCountry.Items[listBoxCountry.SelectedIndex]));
+                UpdateCitySource((Country)(listBoxCountry.Items[listBoxCountry.SelectedIndex]));
+            }
+            else
+            {
+                UpdateCountryInfo(null);
+                UpdateCitySource(null);
+            }
+            
         }
 
         // Загрузить данные из файла.
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Helper.Open("save_1");
+            OpenFileDialog open = new OpenFileDialog();
+            string path = Path.GetFullPath("x");
+            path = path.Substring(0, path.Length - 11) + "Data";
+            open.Filter = "json files (*.json)|*.json";
+            open.InitialDirectory = path;
+            open.ShowDialog();
+            Helper.Open(open.FileName);
+            open.RestoreDirectory = false;
             Helper.Update();
             UpdateInfo();
         }
@@ -235,7 +308,7 @@ namespace GeoHelper
             if (res == DialogResult.Cancel)
                 e.Cancel = true;
             else if (res == DialogResult.Yes)
-                Helper.Save("save_1");
+                SaveFile();
         }
 
         // Выход из программы.
@@ -244,18 +317,145 @@ namespace GeoHelper
             Close();
         }
 
+        // Открыть форму добавления новых элементов в справочник.
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filter = false;
+            UpdateInfo();
+            AddForm addForm = new AddForm(this);
+            addForm.ShowDialog();
+        }
+
         // Открыть форму удаления элементов справочника.
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DeleteForm deleteForm = new DeleteForm(this);
-            deleteForm.ShowDialog();
+            try
+            {
+                Filter = false;
+                UpdateInfo();
+                listBoxContinent.SelectedIndex = 0;
+                DeleteForm deleteForm = new DeleteForm(this);
+                deleteForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Вы не можете удалить элементы, которых нет!",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         // Открыть форму изменения элементов справочника.
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditForm editForm = new EditForm(this);
-            editForm.ShowDialog();
+            //try
+            //{
+                Filter = false;
+                UpdateInfo();
+                listBoxContinent.SelectedIndex = 0;
+                EditForm editForm = new EditForm(this);
+                editForm.ShowDialog();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Вы не можете изменить элементы, которых нет!",
+            //        "Ошибка",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error);
+            //}
+        }
+
+        private List<Continent> ContinentFilter()
+        {
+            double minArea = textBoxMinArea.Text == "" ? -2 : Convert.ToDouble(textBoxMinArea.Text);
+            double maxArea = textBoxMaxArea.Text == "" ? -1 : Convert.ToDouble(textBoxMaxArea.Text);
+            int minPopulation = textBoxMinPopulation.Text == "" ? -2 : Convert.ToInt32(textBoxMinPopulation.Text);
+            int maxPopulation = textBoxMaxPopulation.Text == "" ? -1 : Convert.ToInt32(textBoxMaxPopulation.Text);
+            List<Continent> filtered = new List<Continent> { };
+
+            foreach(Continent c in Helper.ContinentList)
+            {
+                if ((c.Area >= minArea || minArea == -2) &&
+                    (c.Area <= maxArea || maxArea == -1) &&
+                    (c.Population >= minPopulation || minPopulation == -2) &&
+                    (c.Population <= maxPopulation || maxPopulation == -1))
+                {
+                    filtered.Add(c);
+                }
+            }
+            return filtered;
+        }
+
+        private List<Country> CountryFilter(Continent continent)
+        {
+            double minArea = textBoxMinArea.Text == "" ? -2 : Convert.ToDouble(textBoxMinArea.Text);
+            double maxArea = textBoxMaxArea.Text == "" ? -1 : Convert.ToDouble(textBoxMaxArea.Text);
+            int minPopulation = textBoxMinPopulation.Text == "" ? -2 : Convert.ToInt32(textBoxMinPopulation.Text);
+            int maxPopulation = textBoxMaxPopulation.Text == "" ? -1 : Convert.ToInt32(textBoxMaxPopulation.Text);
+            List<Country> filtered = new List<Country> { };
+
+            foreach(Country c in continent.CountryList)
+            {
+                if ((c.Area >= minArea || minArea == -2) &&
+                    (c.Area <= maxArea || maxArea == -1) &&
+                    (c.Population >= minPopulation || minPopulation == -2) &&
+                    (c.Population <= maxPopulation || maxPopulation == -1))
+                {
+                    filtered.Add(c);
+                }
+            } 
+
+            return filtered;
+        }
+
+        private List<City> CityFilter(Country country)
+        {
+            double minArea = textBoxMinArea.Text == "" ? -2 : Convert.ToDouble(textBoxMinArea.Text);
+            double maxArea = textBoxMaxArea.Text == "" ? -1 : Convert.ToDouble(textBoxMaxArea.Text);
+            int minPopulation = textBoxMinPopulation.Text == "" ? -2 : Convert.ToInt32(textBoxMinPopulation.Text);
+            int maxPopulation = textBoxMaxPopulation.Text == "" ? -1 : Convert.ToInt32(textBoxMaxPopulation.Text);
+            List<City> filtered = new List<City> { };
+
+            foreach (City c in country.CityList)
+            {
+                if ((c.Area >= minArea || minArea == -2) &&
+                    (c.Area <= maxArea || maxArea == -1) &&
+                    (c.Population >= minPopulation || minPopulation == -2) &&
+                    (c.Population <= maxPopulation || maxPopulation == -1))
+                {
+                    filtered.Add(c);
+                }
+            }
+
+            return filtered;
+        }
+
+        private void buttonFilterOn_Click(object sender, EventArgs e)
+        {
+            if (Validator.ValidIntMinMaxTextBox(textBoxMinPopulation, textBoxMaxPopulation) &&
+                Validator.ValidDoubleMinMaxTextBox(textBoxMinArea, textBoxMaxArea)
+            )
+            {
+                Filter = true;
+                UpdateInfo();
+            }
+        }
+
+        private void buttonFilterOff_Click(object sender, EventArgs e)
+        {
+            comboBoxGeoType.Text = "";
+            comboBoxSort.Text = "";
+            textBoxMinArea.Text = "";
+            textBoxMinArea.BackColor = Color.White;
+            textBoxMaxArea.Text = "";
+            textBoxMaxArea.BackColor = Color.White;
+            textBoxMinPopulation.Text = "";
+            textBoxMinPopulation.BackColor = Color.White;
+            textBoxMaxPopulation.Text = "";
+            textBoxMaxPopulation.BackColor = Color.White;
+            Filter = false;
+            UpdateInfo();
         }
     }
 }

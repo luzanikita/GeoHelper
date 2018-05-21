@@ -123,14 +123,14 @@
             this.comboBoxCity.Location = new System.Drawing.Point(83, 74);
             this.comboBoxCity.Name = "comboBoxCity";
             this.comboBoxCity.Size = new System.Drawing.Size(172, 21);
-            this.comboBoxCity.TabIndex = 32;
+            this.comboBoxCity.TabIndex = 3;
             // 
             // textBoxLongitude
             // 
             this.textBoxLongitude.Location = new System.Drawing.Point(65, 179);
             this.textBoxLongitude.Name = "textBoxLongitude";
             this.textBoxLongitude.Size = new System.Drawing.Size(51, 20);
-            this.textBoxLongitude.TabIndex = 31;
+            this.textBoxLongitude.TabIndex = 7;
             // 
             // label15
             // 
@@ -146,7 +146,7 @@
             this.textBoxLatitude.Location = new System.Drawing.Point(186, 179);
             this.textBoxLatitude.Name = "textBoxLatitude";
             this.textBoxLatitude.Size = new System.Drawing.Size(51, 20);
-            this.textBoxLatitude.TabIndex = 29;
+            this.textBoxLatitude.TabIndex = 8;
             // 
             // label13
             // 
@@ -164,7 +164,7 @@
             this.comboBoxCityContinent.Location = new System.Drawing.Point(83, 19);
             this.comboBoxCityContinent.Name = "comboBoxCityContinent";
             this.comboBoxCityContinent.Size = new System.Drawing.Size(172, 21);
-            this.comboBoxCityContinent.TabIndex = 27;
+            this.comboBoxCityContinent.TabIndex = 1;
             this.comboBoxCityContinent.SelectedIndexChanged += new System.EventHandler(this.comboBoxCityContinent_SelectedIndexChanged);
             // 
             // label11
@@ -183,7 +183,7 @@
             this.comboBoxCityCountry.Location = new System.Drawing.Point(83, 47);
             this.comboBoxCityCountry.Name = "comboBoxCityCountry";
             this.comboBoxCityCountry.Size = new System.Drawing.Size(172, 21);
-            this.comboBoxCityCountry.TabIndex = 25;
+            this.comboBoxCityCountry.TabIndex = 2;
             this.comboBoxCityCountry.SelectedIndexChanged += new System.EventHandler(this.comboBoxCityCountry_SelectedIndexChanged);
             // 
             // checkBoxIsCapital
@@ -192,7 +192,7 @@
             this.checkBoxIsCapital.Location = new System.Drawing.Point(116, 208);
             this.checkBoxIsCapital.Name = "checkBoxIsCapital";
             this.checkBoxIsCapital.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxIsCapital.TabIndex = 24;
+            this.checkBoxIsCapital.TabIndex = 9;
             this.checkBoxIsCapital.UseVisualStyleBackColor = true;
             // 
             // textBoxCityArea
@@ -200,21 +200,21 @@
             this.textBoxCityArea.Location = new System.Drawing.Point(83, 127);
             this.textBoxCityArea.Name = "textBoxCityArea";
             this.textBoxCityArea.Size = new System.Drawing.Size(172, 20);
-            this.textBoxCityArea.TabIndex = 23;
+            this.textBoxCityArea.TabIndex = 5;
             // 
             // textBoxCityPopulation
             // 
             this.textBoxCityPopulation.Location = new System.Drawing.Point(83, 153);
             this.textBoxCityPopulation.Name = "textBoxCityPopulation";
             this.textBoxCityPopulation.Size = new System.Drawing.Size(172, 20);
-            this.textBoxCityPopulation.TabIndex = 21;
+            this.textBoxCityPopulation.TabIndex = 6;
             // 
             // textBoxCityName
             // 
             this.textBoxCityName.Location = new System.Drawing.Point(83, 101);
             this.textBoxCityName.Name = "textBoxCityName";
             this.textBoxCityName.Size = new System.Drawing.Size(172, 20);
-            this.textBoxCityName.TabIndex = 20;
+            this.textBoxCityName.TabIndex = 4;
             // 
             // label8
             // 
@@ -268,19 +268,18 @@
             this.buttonCancel.Location = new System.Drawing.Point(147, 335);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(126, 28);
-            this.buttonCancel.TabIndex = 33;
-            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.TabIndex = 11;
+            this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOK
             // 
             this.buttonOK.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Location = new System.Drawing.Point(12, 335);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(126, 28);
-            this.buttonOK.TabIndex = 32;
+            this.buttonOK.TabIndex = 10;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = false;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -303,11 +302,13 @@
             // radioButtonContinent
             // 
             this.radioButtonContinent.AutoSize = true;
+            this.radioButtonContinent.Checked = true;
             this.radioButtonContinent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioButtonContinent.Location = new System.Drawing.Point(38, 43);
             this.radioButtonContinent.Name = "radioButtonContinent";
             this.radioButtonContinent.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonContinent.TabIndex = 7;
+            this.radioButtonContinent.TabIndex = 0;
+            this.radioButtonContinent.TabStop = true;
             this.radioButtonContinent.UseVisualStyleBackColor = true;
             this.radioButtonContinent.CheckedChanged += new System.EventHandler(this.radioButtonContinent_CheckedChanged);
             // 
@@ -336,7 +337,7 @@
             this.radioButtonCountry.Location = new System.Drawing.Point(124, 43);
             this.radioButtonCountry.Name = "radioButtonCountry";
             this.radioButtonCountry.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonCountry.TabIndex = 1;
+            this.radioButtonCountry.TabIndex = 0;
             this.radioButtonCountry.UseVisualStyleBackColor = true;
             this.radioButtonCountry.CheckedChanged += new System.EventHandler(this.radioButtonCountry_CheckedChanged);
             // 
@@ -352,13 +353,11 @@
             // radioButtonCity
             // 
             this.radioButtonCity.AutoSize = true;
-            this.radioButtonCity.Checked = true;
             this.radioButtonCity.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioButtonCity.Location = new System.Drawing.Point(213, 43);
             this.radioButtonCity.Name = "radioButtonCity";
             this.radioButtonCity.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonCity.TabIndex = 2;
-            this.radioButtonCity.TabStop = true;
+            this.radioButtonCity.TabIndex = 0;
             this.radioButtonCity.UseVisualStyleBackColor = true;
             this.radioButtonCity.CheckedChanged += new System.EventHandler(this.radioButtonCity_CheckedChanged);
             // 
@@ -391,14 +390,14 @@
             this.comboBoxContinent.Location = new System.Drawing.Point(83, 20);
             this.comboBoxContinent.Name = "comboBoxContinent";
             this.comboBoxContinent.Size = new System.Drawing.Size(172, 21);
-            this.comboBoxContinent.TabIndex = 31;
+            this.comboBoxContinent.TabIndex = 1;
             // 
             // textBoxContinentName
             // 
             this.textBoxContinentName.Location = new System.Drawing.Point(83, 48);
             this.textBoxContinentName.Name = "textBoxContinentName";
             this.textBoxContinentName.Size = new System.Drawing.Size(172, 20);
-            this.textBoxContinentName.TabIndex = 20;
+            this.textBoxContinentName.TabIndex = 2;
             // 
             // label14
             // 
@@ -443,7 +442,7 @@
             this.comboBoxCountryContinent.Location = new System.Drawing.Point(83, 19);
             this.comboBoxCountryContinent.Name = "comboBoxCountryContinent";
             this.comboBoxCountryContinent.Size = new System.Drawing.Size(172, 21);
-            this.comboBoxCountryContinent.TabIndex = 31;
+            this.comboBoxCountryContinent.TabIndex = 1;
             this.comboBoxCountryContinent.SelectedIndexChanged += new System.EventHandler(this.comboBoxCountryContinent_SelectedIndexChanged);
             // 
             // continentBindingSource
@@ -466,7 +465,7 @@
             this.comboBoxCountry.Location = new System.Drawing.Point(83, 47);
             this.comboBoxCountry.Name = "comboBoxCountry";
             this.comboBoxCountry.Size = new System.Drawing.Size(172, 21);
-            this.comboBoxCountry.TabIndex = 29;
+            this.comboBoxCountry.TabIndex = 2;
             // 
             // comboBoxGovForm
             // 
@@ -474,14 +473,14 @@
             this.comboBoxGovForm.Location = new System.Drawing.Point(135, 100);
             this.comboBoxGovForm.Name = "comboBoxGovForm";
             this.comboBoxGovForm.Size = new System.Drawing.Size(120, 21);
-            this.comboBoxGovForm.TabIndex = 21;
+            this.comboBoxGovForm.TabIndex = 4;
             // 
             // textBoxCountryName
             // 
             this.textBoxCountryName.Location = new System.Drawing.Point(83, 74);
             this.textBoxCountryName.Name = "textBoxCountryName";
             this.textBoxCountryName.Size = new System.Drawing.Size(172, 20);
-            this.textBoxCountryName.TabIndex = 20;
+            this.textBoxCountryName.TabIndex = 3;
             // 
             // label9
             // 
@@ -506,12 +505,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 371);
-            this.Controls.Add(this.groupBoxCity);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.groupBoxRadio);
             this.Controls.Add(this.groupBoxContinent);
             this.Controls.Add(this.groupBoxCountry);
+            this.Controls.Add(this.groupBoxCity);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

@@ -42,13 +42,13 @@ namespace GeoHelper
         {
             Update();
             string json = JsonConvert.SerializeObject(ContinentList);
-            File.WriteAllText($"..\\..\\Data\\{fileName}.json", json);
+            File.WriteAllText(fileName, json);
         }
 
         // Загрузить информацию в справочник из файла.
         public void Open(string fileName)
         {
-            string json = File.ReadAllText($"..\\..\\Data\\{fileName}.json");
+            string json = File.ReadAllText(fileName);
             ContinentList = JsonConvert.DeserializeObject<List<Continent>>(json);
         }
     }
