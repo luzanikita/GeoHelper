@@ -61,5 +61,10 @@ namespace GeoHelper
             Name = name == "" ? Name : name;
             Government = government == "" ? Government : government;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

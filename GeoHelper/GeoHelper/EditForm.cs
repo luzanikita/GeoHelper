@@ -136,7 +136,7 @@ namespace GeoHelper
         private void buttonOK_Click(object sender, EventArgs e)
         {
             if (radioButtonContinent.Checked &&
-                Validator.ValidContinentComboBox(comboBoxContinent) &&
+                Validator.ValidComboBox<Continent>(comboBoxContinent) &&
                 Validator.ValidName(textBoxContinentName))
             {
                 Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]
@@ -146,10 +146,10 @@ namespace GeoHelper
                 Close();
             }
             else if (radioButtonCountry.Checked &&
-                Validator.ValidContinentComboBox(comboBoxCountryContinent) &&
-                Validator.ValidCountryComboBox(comboBoxCountry) &&
+                Validator.ValidComboBox<Continent>(comboBoxCountryContinent) &&
+                Validator.ValidComboBox<Country>(comboBoxCountry) &&
                 Validator.ValidName(textBoxCountryName) &&
-                Validator.ValidGovFormComboBox(comboBoxGovForm))
+                Validator.ValidComboBox<string>(comboBoxGovForm))
             {
                 Main.Helper.ContinentList[comboBoxCountryContinent.SelectedIndex]
                     .CountryList[comboBoxCountry.SelectedIndex]
@@ -159,9 +159,9 @@ namespace GeoHelper
                 Close();
             }
             else if (radioButtonCity.Checked &&
-                Validator.ValidContinentComboBox(comboBoxCityContinent) &&
-                Validator.ValidCountryComboBox(comboBoxCityCountry) &&
-                Validator.ValidCityComboBox(comboBoxCity) &&
+                Validator.ValidComboBox<Continent>(comboBoxCityContinent) &&
+                Validator.ValidComboBox<Country>(comboBoxCityCountry) &&
+                Validator.ValidComboBox<City>(comboBoxCity) &&
                 Validator.ValidName(textBoxCityName) &&
                 Validator.ValidCoordTextBox(textBoxLongitude) &&
                 Validator.ValidCoordTextBox(textBoxLatitude) &&

@@ -102,43 +102,53 @@ namespace GeoHelper
         // Обработка и удаление введенных данных из справочника.
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (radioButtonContinent.Checked && Validator.ValidContinentComboBox(comboBoxContinent))
+            try
             {
-                Main.Helper.Remove(Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]);
-                Main.Helper.Update();
-                Main.UpdateInfo();
-                Close();
-            }
-            else if(radioButtonCountry.Checked &&
-                Validator.ValidContinentComboBox(comboBoxContinent) &&
-                Validator.ValidCountryComboBox(comboBoxCountry))
-            {
-                Main.Helper.ContinentList[comboBoxContinent.SelectedIndex].Remove(Main.Helper
-                    .ContinentList[comboBoxContinent.SelectedIndex]
-                    .CountryList[comboBoxCountry.SelectedIndex]);
-                Main.Helper.Update();
-                Main.UpdateInfo();
-                Close();
-            }
-            else if (radioButtonCity.Checked &&
-                Validator.ValidContinentComboBox(comboBoxContinent) &&
-                Validator.ValidCountryComboBox(comboBoxCountry) &&
-                Validator.ValidCityComboBox(comboBoxCity))
-            {
-                Main.Helper
-                    .ContinentList[comboBoxContinent.SelectedIndex]
-                    .CountryList[comboBoxCountry.SelectedIndex]
-                    .CityList.Remove(Main.Helper
+                if (radioButtonContinent.Checked && Validator.ValidComboBox<Continent>(comboBoxContinent))
+                {
+                    Main.Helper.Remove(Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]);
+                    Main.Helper.Update();
+                    Main.UpdateInfo();
+                    Close();
+                }
+                else if (radioButtonCountry.Checked &&
+                    Validator.ValidComboBox<Continent>(comboBoxContinent) &&
+                    Validator.ValidComboBox<Country>(comboBoxCountry))
+                {
+                    Main.Helper.ContinentList[comboBoxContinent.SelectedIndex].Remove(Main.Helper
+                        .ContinentList[comboBoxContinent.SelectedIndex]
+                        .CountryList[comboBoxCountry.SelectedIndex]);
+                    Main.Helper.Update();
+                    Main.UpdateInfo();
+                    Close();
+                }
+                else if (radioButtonCity.Checked &&
+                    Validator.ValidComboBox<Continent>(comboBoxContinent) &&
+                    Validator.ValidComboBox<Country>(comboBoxCountry) &&
+                    Validator.ValidComboBox<City>(comboBoxCity))
+                {
+                    Main.Helper
                         .ContinentList[comboBoxContinent.SelectedIndex]
                         .CountryList[comboBoxCountry.SelectedIndex]
-                        .CityList[comboBoxCity.SelectedIndex]);
-                Main.Helper.Update();
-                Main.UpdateInfo();
-                Close();
+                        .CityList.Remove(Main.Helper
+                            .ContinentList[comboBoxContinent.SelectedIndex]
+                            .CountryList[comboBoxCountry.SelectedIndex]
+                            .CityList[comboBoxCity.SelectedIndex]);
+                    Main.Helper.Update();
+                    Main.UpdateInfo();
+                    Close();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Убедитесь, что все поля заполнены правильно.\nВ списках должны быть указаны существующие элементы.",
+               "Неправильно заполнены поля",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Warning);
             }
         }
 
-
+        // Отобразить соответстующие поля для удаления страны.
         private void radioButtonCountry_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxCity.Visible = false;
@@ -147,6 +157,7 @@ namespace GeoHelper
             labelCountry.Visible = true;
         }
 
+        // Отобразить соответствующие поля для удаления города.
         private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxCity.Visible = true;
@@ -155,6 +166,7 @@ namespace GeoHelper
             labelCountry.Visible = true;
         }
 
+        // Отобразить соответствующие поля для удаления континента.
         private void radioButtonContinent_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxCity.Visible = false;
