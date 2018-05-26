@@ -33,5 +33,10 @@
             Population = population == -1 ? Population : population;
             IsCapital = isCapital;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -52,5 +52,10 @@ namespace GeoHelper
         {
             Name = name == "" ? Name : name;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

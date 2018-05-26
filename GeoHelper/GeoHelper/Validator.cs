@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace GeoHelper
 {
+    // Класс, содержащий методы для валидации полейформ.
     class Validator
     {
         public static bool ValidName(TextBox field, bool required = false)
@@ -28,6 +29,7 @@ namespace GeoHelper
             return false;
         }
 
+        // Валидация полей на содержание действительных чисел больше нуля.
         public static bool ValidDoubleField(TextBox field, bool required = false)
         {
             double x = 0;
@@ -47,6 +49,7 @@ namespace GeoHelper
             return false;
         }
 
+        // Валидация полей на содержание целых чисе больше нуля.
         public static bool ValidIntField(TextBox field, bool required = false)
         {
             int x = 0;
@@ -66,12 +69,14 @@ namespace GeoHelper
                 return false;
         }
 
+        // Валидация парных полей, описывающих диапазон действительных чисел.
         public static bool ValidDoubleMinMaxTextBox(TextBox minField, TextBox maxField, bool required = false)
         {
             double min = !required && minField.Text == "" ? -2 : 0;
             double max = !required && maxField.Text == "" ? -1 : 0;
 
-            if ((min == -2 || Double.TryParse(minField.Text, out min)) && (max == -1 || Double.TryParse(maxField.Text, out max)))
+            if ((min == -2 || Double.TryParse(minField.Text, out min)) &&
+                (max == -1 || Double.TryParse(maxField.Text, out max)))
             {
                 if (max == -1 || min <= max)
                 {
@@ -89,12 +94,14 @@ namespace GeoHelper
             return false;
         }
 
+        // Валидация парных полей, описывающих диапазон целых чисел.
         public static bool ValidIntMinMaxTextBox(TextBox minField, TextBox maxField, bool required = false)
         {
             int min = !required && minField.Text == "" ? -2 : 0;
             int max = !required && maxField.Text == "" ? -1 : 0;
 
-            if ((min == -2 || Int32.TryParse(minField.Text, out min)) && (max == -1 || Int32.TryParse(maxField.Text, out max)))
+            if ((min == -2 || Int32.TryParse(minField.Text, out min)) &&
+                (max == -1 || Int32.TryParse(maxField.Text, out max)))
             {
                 if (max == -1 || min <= max)
                 {
@@ -112,6 +119,7 @@ namespace GeoHelper
             return false;
         }
 
+        // Валидация полей координат.
         public static bool ValidCoordTextBox(TextBox field, bool required = false)
         {
             double x = 0;
@@ -134,12 +142,13 @@ namespace GeoHelper
             return false;
         }
 
-        public static bool ValidContinentComboBox(ComboBox field)
+        // Валидация полей с выбором из списка, на содержание
+        public static bool ValidComboBox<T>(ComboBox field)
         {
-            List<Continent> data = (List<Continent>)field.DataSource;
+            List<T> data = (List<T>)field.DataSource;
             foreach (var item in data)
             {
-                if (item.Name == field.Text)
+                if (item.ToString() == field.Text)
                 {
                     field.BackColor = Color.White;
                     return true;
@@ -152,62 +161,5 @@ namespace GeoHelper
                     MessageBoxIcon.Warning);
             return false;
         }
-
-        public static bool ValidCountryComboBox(ComboBox field)
-        {
-            List<Country> data = (List<Country>)field.DataSource;
-            foreach (var item in data)
-            {
-                if (item.Name == field.Text)
-                {
-                    field.BackColor = Color.White;
-                    return true;
-                }
-            }
-            field.BackColor = Color.Pink;
-            MessageBox.Show("Значение поля должно существовать в списке",
-                    "Неправильно заполнены поля",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            return false;
-        }
-
-        public static bool ValidCityComboBox(ComboBox field)
-        {
-            List<City> data = (List<City>)field.DataSource;
-            foreach (var item in data)
-            {
-                if (item.Name == field.Text)
-                {
-                    field.BackColor = Color.White;
-                    return true;
-                }
-            }
-            field.BackColor = Color.Pink;
-            MessageBox.Show("Значение поля должно существовать в списке",
-                    "Неправильно заполнены поля",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            return false;
-        }
-
-        public static bool ValidGovFormComboBox(ComboBox field)
-        {
-            List<string> govForms = (List<string>)field.DataSource;
-            foreach(string item in govForms)
-            {
-                if(item == field.Text)
-                {
-                    field.BackColor = Color.White;
-                    return true;
-                }
-            }
-            field.BackColor = Color.Pink;
-            MessageBox.Show("Значение поля должно существовать в списке",
-                    "Неправильно заполнены поля",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            return false;
-        } 
     }
 }

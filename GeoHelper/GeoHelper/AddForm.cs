@@ -72,9 +72,9 @@ namespace GeoHelper
                 Close();
             }
             else if (radioButtonCountry.Checked &&
-                Validator.ValidContinentComboBox(comboBoxContinent) &&
+                Validator.ValidComboBox<Continent>(comboBoxContinent) &&
                 Validator.ValidName(textBoxCountryName, true) &&
-                Validator.ValidGovFormComboBox(comboBoxGovForm))
+                Validator.ValidComboBox<string>(comboBoxGovForm))
             {
                 Main.Helper.ContinentList[comboBoxContinent.SelectedIndex]
                     .Add(textBoxCountryName.Text, comboBoxGovForm.Text);
@@ -83,8 +83,8 @@ namespace GeoHelper
                 Close();
             }
             else if(radioButtonCity.Checked &&
-                Validator.ValidContinentComboBox(comboBoxCityContinent) &&
-                Validator.ValidCountryComboBox(comboBoxCountry) &&
+                Validator.ValidComboBox<Continent>(comboBoxCityContinent) &&
+                Validator.ValidComboBox<Country>(comboBoxCountry) &&
                 Validator.ValidName(textBoxCityName, true) &&
                 Validator.ValidDoubleField(textBoxCityArea, true) &&
                 Validator.ValidIntField(textBoxCityPopulation, true) &&
