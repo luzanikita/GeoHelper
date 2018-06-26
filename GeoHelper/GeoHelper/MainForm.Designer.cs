@@ -40,6 +40,7 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пошукToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxNavigation = new System.Windows.Forms.GroupBox();
             this.labelCity = new System.Windows.Forms.Label();
             this.labelCountry = new System.Windows.Forms.Label();
@@ -53,16 +54,13 @@
             this.listBoxCity = new System.Windows.Forms.ListBox();
             this.cityListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
-            this.groupBoxCityInfo = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cityIsCapital = new System.Windows.Forms.Label();
-            this.cityPopulation = new System.Windows.Forms.Label();
-            this.cityArea = new System.Windows.Forms.Label();
-            this.cityCoordinates = new System.Windows.Forms.Label();
-            this.cityName = new System.Windows.Forms.Label();
+            this.groupBoxRadio = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.radioButtonContinent = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.radioButtonCountry = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButtonCity = new System.Windows.Forms.RadioButton();
             this.groupBoxCountryInfo = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,13 +77,16 @@
             this.continentPopulation = new System.Windows.Forms.Label();
             this.continentArea = new System.Windows.Forms.Label();
             this.continentName = new System.Windows.Forms.Label();
-            this.groupBoxRadio = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.radioButtonContinent = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButtonCountry = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.radioButtonCity = new System.Windows.Forms.RadioButton();
+            this.groupBoxCityInfo = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cityIsCapital = new System.Windows.Forms.Label();
+            this.cityPopulation = new System.Windows.Forms.Label();
+            this.cityArea = new System.Windows.Forms.Label();
+            this.cityCoordinates = new System.Windows.Forms.Label();
+            this.cityName = new System.Windows.Forms.Label();
             this.groupBoxMap = new System.Windows.Forms.GroupBox();
             this.pictureBoxMarker = new System.Windows.Forms.PictureBox();
             this.pictureBoxMap = new System.Windows.Forms.PictureBox();
@@ -115,10 +116,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.continentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cityListBindingSource)).BeginInit();
             this.groupBoxInfo.SuspendLayout();
-            this.groupBoxCityInfo.SuspendLayout();
+            this.groupBoxRadio.SuspendLayout();
             this.groupBoxCountryInfo.SuspendLayout();
             this.groupBoxContinentInfo.SuspendLayout();
-            this.groupBoxRadio.SuspendLayout();
+            this.groupBoxCityInfo.SuspendLayout();
             this.groupBoxMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMarker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
@@ -130,7 +131,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.ToolStripMenuItem});
+            this.ToolStripMenuItem,
+            this.пошукToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(910, 24);
@@ -152,29 +154,29 @@
             // 
             this.сохранитьToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьToolStripMenuItem.Image")));
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.сохранитьToolStripMenuItem.Text = "Зберегти";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьToolStripMenuItem.Image")));
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.открытьToolStripMenuItem.Text = "Відкрити";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(121, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.выходToolStripMenuItem.Text = "Вихід";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem
@@ -184,32 +186,39 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.ToolStripMenuItem.Name = "ToolStripMenuItem";
-            this.ToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.ToolStripMenuItem.Text = "Редактировать";
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.ToolStripMenuItem.Text = "Редагувати";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addToolStripMenuItem.Image")));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.addToolStripMenuItem.Text = "Добавить";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.addToolStripMenuItem.Text = "Додати";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItem.Image")));
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.editToolStripMenuItem.Text = "Изменить";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.editToolStripMenuItem.Text = "Змінити";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.deleteToolStripMenuItem.Text = "Удалить";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.deleteToolStripMenuItem.Text = "Видалити";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // пошукToolStripMenuItem
+            // 
+            this.пошукToolStripMenuItem.Name = "пошукToolStripMenuItem";
+            this.пошукToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.пошукToolStripMenuItem.Text = "Пошук";
+            this.пошукToolStripMenuItem.Click += new System.EventHandler(this.пошукToolStripMenuItem_Click);
             // 
             // groupBoxNavigation
             // 
@@ -225,25 +234,25 @@
             this.groupBoxNavigation.Size = new System.Drawing.Size(555, 247);
             this.groupBoxNavigation.TabIndex = 1;
             this.groupBoxNavigation.TabStop = false;
-            this.groupBoxNavigation.Text = "Навигация";
+            this.groupBoxNavigation.Text = "Навігація";
             // 
             // labelCity
             // 
             this.labelCity.AutoSize = true;
             this.labelCity.Location = new System.Drawing.Point(440, 22);
             this.labelCity.Name = "labelCity";
-            this.labelCity.Size = new System.Drawing.Size(37, 13);
+            this.labelCity.Size = new System.Drawing.Size(35, 13);
             this.labelCity.TabIndex = 5;
-            this.labelCity.Text = "Город";
+            this.labelCity.Text = "Місто";
             // 
             // labelCountry
             // 
             this.labelCountry.AutoSize = true;
             this.labelCountry.Location = new System.Drawing.Point(256, 22);
             this.labelCountry.Name = "labelCountry";
-            this.labelCountry.Size = new System.Drawing.Size(43, 13);
+            this.labelCountry.Size = new System.Drawing.Size(41, 13);
             this.labelCountry.TabIndex = 4;
-            this.labelCountry.Text = "Страна";
+            this.labelCountry.Text = "Країна";
             // 
             // listBoxContinent
             // 
@@ -319,115 +328,93 @@
             this.groupBoxInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBoxInfo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupBoxInfo.Controls.Add(this.groupBoxCityInfo);
+            this.groupBoxInfo.Controls.Add(this.groupBoxRadio);
             this.groupBoxInfo.Controls.Add(this.groupBoxCountryInfo);
             this.groupBoxInfo.Controls.Add(this.groupBoxContinentInfo);
-            this.groupBoxInfo.Controls.Add(this.groupBoxRadio);
             this.groupBoxInfo.Location = new System.Drawing.Point(599, 36);
             this.groupBoxInfo.Name = "groupBoxInfo";
             this.groupBoxInfo.Size = new System.Drawing.Size(299, 305);
             this.groupBoxInfo.TabIndex = 2;
             this.groupBoxInfo.TabStop = false;
-            this.groupBoxInfo.Text = "Информация";
+            this.groupBoxInfo.Text = "Інформація";
             // 
-            // groupBoxCityInfo
+            // groupBoxRadio
             // 
-            this.groupBoxCityInfo.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBoxCityInfo.Controls.Add(this.label7);
-            this.groupBoxCityInfo.Controls.Add(this.label6);
-            this.groupBoxCityInfo.Controls.Add(this.label5);
-            this.groupBoxCityInfo.Controls.Add(this.label4);
-            this.groupBoxCityInfo.Controls.Add(this.cityIsCapital);
-            this.groupBoxCityInfo.Controls.Add(this.cityPopulation);
-            this.groupBoxCityInfo.Controls.Add(this.cityArea);
-            this.groupBoxCityInfo.Controls.Add(this.cityCoordinates);
-            this.groupBoxCityInfo.Controls.Add(this.cityName);
-            this.groupBoxCityInfo.Location = new System.Drawing.Point(15, 19);
-            this.groupBoxCityInfo.Name = "groupBoxCityInfo";
-            this.groupBoxCityInfo.Size = new System.Drawing.Size(270, 171);
-            this.groupBoxCityInfo.TabIndex = 4;
-            this.groupBoxCityInfo.TabStop = false;
-            this.groupBoxCityInfo.Text = "Информация о городе";
+            this.groupBoxRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxRadio.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBoxRadio.Controls.Add(this.label3);
+            this.groupBoxRadio.Controls.Add(this.radioButtonContinent);
+            this.groupBoxRadio.Controls.Add(this.label2);
+            this.groupBoxRadio.Controls.Add(this.radioButtonCountry);
+            this.groupBoxRadio.Controls.Add(this.label1);
+            this.groupBoxRadio.Controls.Add(this.radioButtonCity);
+            this.groupBoxRadio.Location = new System.Drawing.Point(15, 210);
+            this.groupBoxRadio.Name = "groupBoxRadio";
+            this.groupBoxRadio.Size = new System.Drawing.Size(271, 75);
+            this.groupBoxRadio.TabIndex = 3;
+            this.groupBoxRadio.TabStop = false;
             // 
-            // label7
+            // label3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 131);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Является столицей:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(201, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Місто";
             // 
-            // label6
+            // radioButtonContinent
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 106);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Население:";
+            this.radioButtonContinent.AutoSize = true;
+            this.radioButtonContinent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButtonContinent.Location = new System.Drawing.Point(39, 43);
+            this.radioButtonContinent.Name = "radioButtonContinent";
+            this.radioButtonContinent.Size = new System.Drawing.Size(14, 13);
+            this.radioButtonContinent.TabIndex = 0;
+            this.radioButtonContinent.UseVisualStyleBackColor = true;
+            this.radioButtonContinent.CheckedChanged += new System.EventHandler(this.radioButtonContinent_CheckedChanged);
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Площадь:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(110, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Країна";
             // 
-            // label4
+            // radioButtonCountry
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Координаты:";
+            this.radioButtonCountry.AutoSize = true;
+            this.radioButtonCountry.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButtonCountry.Location = new System.Drawing.Point(124, 43);
+            this.radioButtonCountry.Name = "radioButtonCountry";
+            this.radioButtonCountry.Size = new System.Drawing.Size(14, 13);
+            this.radioButtonCountry.TabIndex = 1;
+            this.radioButtonCountry.UseVisualStyleBackColor = true;
+            this.radioButtonCountry.CheckedChanged += new System.EventHandler(this.radioButtonCountry_CheckedChanged);
             // 
-            // cityIsCapital
+            // label1
             // 
-            this.cityIsCapital.AutoSize = true;
-            this.cityIsCapital.Location = new System.Drawing.Point(141, 131);
-            this.cityIsCapital.Name = "cityIsCapital";
-            this.cityIsCapital.Size = new System.Drawing.Size(10, 13);
-            this.cityIsCapital.TabIndex = 4;
-            this.cityIsCapital.Text = "-";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Континент";
             // 
-            // cityPopulation
+            // radioButtonCity
             // 
-            this.cityPopulation.AutoSize = true;
-            this.cityPopulation.Location = new System.Drawing.Point(141, 106);
-            this.cityPopulation.Name = "cityPopulation";
-            this.cityPopulation.Size = new System.Drawing.Size(10, 13);
-            this.cityPopulation.TabIndex = 3;
-            this.cityPopulation.Text = "-";
-            // 
-            // cityArea
-            // 
-            this.cityArea.AutoSize = true;
-            this.cityArea.Location = new System.Drawing.Point(141, 80);
-            this.cityArea.Name = "cityArea";
-            this.cityArea.Size = new System.Drawing.Size(10, 13);
-            this.cityArea.TabIndex = 2;
-            this.cityArea.Text = "-";
-            // 
-            // cityCoordinates
-            // 
-            this.cityCoordinates.AutoSize = true;
-            this.cityCoordinates.Location = new System.Drawing.Point(141, 53);
-            this.cityCoordinates.Name = "cityCoordinates";
-            this.cityCoordinates.Size = new System.Drawing.Size(10, 13);
-            this.cityCoordinates.TabIndex = 1;
-            this.cityCoordinates.Text = "-";
-            // 
-            // cityName
-            // 
-            this.cityName.AutoSize = true;
-            this.cityName.Location = new System.Drawing.Point(15, 26);
-            this.cityName.Name = "cityName";
-            this.cityName.Size = new System.Drawing.Size(10, 13);
-            this.cityName.TabIndex = 0;
-            this.cityName.Text = "-";
+            this.radioButtonCity.AutoSize = true;
+            this.radioButtonCity.Checked = true;
+            this.radioButtonCity.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButtonCity.Location = new System.Drawing.Point(213, 43);
+            this.radioButtonCity.Name = "radioButtonCity";
+            this.radioButtonCity.Size = new System.Drawing.Size(14, 13);
+            this.radioButtonCity.TabIndex = 2;
+            this.radioButtonCity.TabStop = true;
+            this.radioButtonCity.UseVisualStyleBackColor = true;
+            this.radioButtonCity.CheckedChanged += new System.EventHandler(this.radioButtonCity_CheckedChanged);
             // 
             // groupBoxCountryInfo
             // 
@@ -446,7 +433,7 @@
             this.groupBoxCountryInfo.Size = new System.Drawing.Size(270, 171);
             this.groupBoxCountryInfo.TabIndex = 10;
             this.groupBoxCountryInfo.TabStop = false;
-            this.groupBoxCountryInfo.Text = "Информация о стране";
+            this.groupBoxCountryInfo.Text = "Інофрмація про країну";
             this.groupBoxCountryInfo.Visible = false;
             // 
             // label8
@@ -454,9 +441,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(11, 131);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(132, 13);
+            this.label8.Size = new System.Drawing.Size(102, 13);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Форма гос. управления:";
+            this.label8.Text = "Форма держ. упр.:";
             // 
             // label9
             // 
@@ -465,16 +452,16 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 13);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Население:";
+            this.label9.Text = "Населення:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(11, 80);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 13);
+            this.label10.Size = new System.Drawing.Size(45, 13);
             this.label10.TabIndex = 7;
-            this.label10.Text = "Площадь:";
+            this.label10.Text = "Площа:";
             // 
             // label11
             // 
@@ -483,7 +470,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 6;
-            this.label11.Text = "Столица:";
+            this.label11.Text = "Столиця:";
             // 
             // countryGovernment
             // 
@@ -543,7 +530,7 @@
             this.groupBoxContinentInfo.Size = new System.Drawing.Size(270, 171);
             this.groupBoxContinentInfo.TabIndex = 10;
             this.groupBoxContinentInfo.TabStop = false;
-            this.groupBoxContinentInfo.Text = "Информация о континенте";
+            this.groupBoxContinentInfo.Text = "Інофрмація про континент";
             // 
             // label13
             // 
@@ -552,16 +539,16 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 13);
             this.label13.TabIndex = 8;
-            this.label13.Text = "Население:";
+            this.label13.Text = "Населення:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(11, 53);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.Size = new System.Drawing.Size(45, 13);
             this.label14.TabIndex = 7;
-            this.label14.Text = "Площадь:";
+            this.label14.Text = "Площа:";
             // 
             // continentPopulation
             // 
@@ -590,83 +577,105 @@
             this.continentName.TabIndex = 0;
             this.continentName.Text = "-";
             // 
-            // groupBoxRadio
+            // groupBoxCityInfo
             // 
-            this.groupBoxRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBoxRadio.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.groupBoxRadio.Controls.Add(this.label3);
-            this.groupBoxRadio.Controls.Add(this.radioButtonContinent);
-            this.groupBoxRadio.Controls.Add(this.label2);
-            this.groupBoxRadio.Controls.Add(this.radioButtonCountry);
-            this.groupBoxRadio.Controls.Add(this.label1);
-            this.groupBoxRadio.Controls.Add(this.radioButtonCity);
-            this.groupBoxRadio.Location = new System.Drawing.Point(15, 210);
-            this.groupBoxRadio.Name = "groupBoxRadio";
-            this.groupBoxRadio.Size = new System.Drawing.Size(271, 75);
-            this.groupBoxRadio.TabIndex = 3;
-            this.groupBoxRadio.TabStop = false;
+            this.groupBoxCityInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBoxCityInfo.Controls.Add(this.label7);
+            this.groupBoxCityInfo.Controls.Add(this.label6);
+            this.groupBoxCityInfo.Controls.Add(this.label5);
+            this.groupBoxCityInfo.Controls.Add(this.label4);
+            this.groupBoxCityInfo.Controls.Add(this.cityIsCapital);
+            this.groupBoxCityInfo.Controls.Add(this.cityPopulation);
+            this.groupBoxCityInfo.Controls.Add(this.cityArea);
+            this.groupBoxCityInfo.Controls.Add(this.cityCoordinates);
+            this.groupBoxCityInfo.Controls.Add(this.cityName);
+            this.groupBoxCityInfo.Location = new System.Drawing.Point(15, 19);
+            this.groupBoxCityInfo.Name = "groupBoxCityInfo";
+            this.groupBoxCityInfo.Size = new System.Drawing.Size(270, 171);
+            this.groupBoxCityInfo.TabIndex = 4;
+            this.groupBoxCityInfo.TabStop = false;
+            this.groupBoxCityInfo.Text = "Інформація про місто";
             // 
-            // label3
+            // label7
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(201, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Город";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 131);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Статус столиці:";
             // 
-            // radioButtonContinent
+            // label6
             // 
-            this.radioButtonContinent.AutoSize = true;
-            this.radioButtonContinent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonContinent.Location = new System.Drawing.Point(39, 43);
-            this.radioButtonContinent.Name = "radioButtonContinent";
-            this.radioButtonContinent.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonContinent.TabIndex = 0;
-            this.radioButtonContinent.UseVisualStyleBackColor = true;
-            this.radioButtonContinent.CheckedChanged += new System.EventHandler(this.radioButtonContinent_CheckedChanged);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 106);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Населення:";
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(110, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Страна";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Площа:";
             // 
-            // radioButtonCountry
+            // label4
             // 
-            this.radioButtonCountry.AutoSize = true;
-            this.radioButtonCountry.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonCountry.Location = new System.Drawing.Point(124, 43);
-            this.radioButtonCountry.Name = "radioButtonCountry";
-            this.radioButtonCountry.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonCountry.TabIndex = 1;
-            this.radioButtonCountry.UseVisualStyleBackColor = true;
-            this.radioButtonCountry.CheckedChanged += new System.EventHandler(this.radioButtonCountry_CheckedChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Координати:";
             // 
-            // label1
+            // cityIsCapital
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Континент";
+            this.cityIsCapital.AutoSize = true;
+            this.cityIsCapital.Location = new System.Drawing.Point(141, 131);
+            this.cityIsCapital.Name = "cityIsCapital";
+            this.cityIsCapital.Size = new System.Drawing.Size(10, 13);
+            this.cityIsCapital.TabIndex = 4;
+            this.cityIsCapital.Text = "-";
             // 
-            // radioButtonCity
+            // cityPopulation
             // 
-            this.radioButtonCity.AutoSize = true;
-            this.radioButtonCity.Checked = true;
-            this.radioButtonCity.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonCity.Location = new System.Drawing.Point(213, 43);
-            this.radioButtonCity.Name = "radioButtonCity";
-            this.radioButtonCity.Size = new System.Drawing.Size(14, 13);
-            this.radioButtonCity.TabIndex = 2;
-            this.radioButtonCity.TabStop = true;
-            this.radioButtonCity.UseVisualStyleBackColor = true;
-            this.radioButtonCity.CheckedChanged += new System.EventHandler(this.radioButtonCity_CheckedChanged);
+            this.cityPopulation.AutoSize = true;
+            this.cityPopulation.Location = new System.Drawing.Point(141, 106);
+            this.cityPopulation.Name = "cityPopulation";
+            this.cityPopulation.Size = new System.Drawing.Size(10, 13);
+            this.cityPopulation.TabIndex = 3;
+            this.cityPopulation.Text = "-";
+            // 
+            // cityArea
+            // 
+            this.cityArea.AutoSize = true;
+            this.cityArea.Location = new System.Drawing.Point(141, 80);
+            this.cityArea.Name = "cityArea";
+            this.cityArea.Size = new System.Drawing.Size(10, 13);
+            this.cityArea.TabIndex = 2;
+            this.cityArea.Text = "-";
+            // 
+            // cityCoordinates
+            // 
+            this.cityCoordinates.AutoSize = true;
+            this.cityCoordinates.Location = new System.Drawing.Point(141, 53);
+            this.cityCoordinates.Name = "cityCoordinates";
+            this.cityCoordinates.Size = new System.Drawing.Size(10, 13);
+            this.cityCoordinates.TabIndex = 1;
+            this.cityCoordinates.Text = "-";
+            // 
+            // cityName
+            // 
+            this.cityName.AutoSize = true;
+            this.cityName.Location = new System.Drawing.Point(15, 26);
+            this.cityName.Name = "cityName";
+            this.cityName.Size = new System.Drawing.Size(10, 13);
+            this.cityName.TabIndex = 0;
+            this.cityName.Text = "-";
             // 
             // groupBoxMap
             // 
@@ -711,7 +720,7 @@
             this.groupBoxFilters.Size = new System.Drawing.Size(299, 246);
             this.groupBoxFilters.TabIndex = 4;
             this.groupBoxFilters.TabStop = false;
-            this.groupBoxFilters.Text = "Фильтры";
+            this.groupBoxFilters.Text = "Фільтри";
             // 
             // buttonFilterOff
             // 
@@ -719,7 +728,7 @@
             this.buttonFilterOff.Name = "buttonFilterOff";
             this.buttonFilterOff.Size = new System.Drawing.Size(128, 34);
             this.buttonFilterOff.TabIndex = 8;
-            this.buttonFilterOff.Text = "Сбросить";
+            this.buttonFilterOff.Text = "Скасувати";
             this.buttonFilterOff.UseVisualStyleBackColor = true;
             this.buttonFilterOff.Click += new System.EventHandler(this.buttonFilterOff_Click);
             // 
@@ -729,7 +738,7 @@
             this.buttonFilterOn.Name = "buttonFilterOn";
             this.buttonFilterOn.Size = new System.Drawing.Size(128, 34);
             this.buttonFilterOn.TabIndex = 7;
-            this.buttonFilterOn.Text = "Применить";
+            this.buttonFilterOn.Text = "Застосувати";
             this.buttonFilterOn.UseVisualStyleBackColor = true;
             this.buttonFilterOn.Click += new System.EventHandler(this.buttonFilterOn_Click);
             // 
@@ -787,9 +796,9 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(11, 62);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 13);
+            this.label21.Size = new System.Drawing.Size(86, 13);
             this.label21.TabIndex = 12;
-            this.label21.Text = "Фильтры для ";
+            this.label21.Text = "Застосувати до";
             // 
             // label18
             // 
@@ -805,18 +814,18 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(80, 133);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(18, 13);
+            this.label19.Size = new System.Drawing.Size(21, 13);
             this.label19.TabIndex = 10;
-            this.label19.Text = "от";
+            this.label19.Text = "від";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(11, 133);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(54, 13);
+            this.label20.Size = new System.Drawing.Size(42, 13);
             this.label20.TabIndex = 9;
-            this.label20.Text = "Площадь";
+            this.label20.Text = "Площа";
             // 
             // textBoxMinArea
             // 
@@ -839,9 +848,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(81, 98);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(18, 13);
+            this.label16.Size = new System.Drawing.Size(21, 13);
             this.label16.TabIndex = 5;
-            this.label16.Text = "от";
+            this.label16.Text = "від";
             // 
             // label15
             // 
@@ -850,7 +859,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(63, 13);
             this.label15.TabIndex = 4;
-            this.label15.Text = "Население";
+            this.label15.Text = "Населення";
             // 
             // textBoxMinPopulation
             // 
@@ -876,9 +885,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(11, 26);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 13);
+            this.label12.Size = new System.Drawing.Size(74, 13);
             this.label12.TabIndex = 0;
-            this.label12.Text = "Сортировать по";
+            this.label12.Text = "Сортувати за";
             // 
             // MainForm
             // 
@@ -911,14 +920,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.continentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cityListBindingSource)).EndInit();
             this.groupBoxInfo.ResumeLayout(false);
-            this.groupBoxCityInfo.ResumeLayout(false);
-            this.groupBoxCityInfo.PerformLayout();
+            this.groupBoxRadio.ResumeLayout(false);
+            this.groupBoxRadio.PerformLayout();
             this.groupBoxCountryInfo.ResumeLayout(false);
             this.groupBoxCountryInfo.PerformLayout();
             this.groupBoxContinentInfo.ResumeLayout(false);
             this.groupBoxContinentInfo.PerformLayout();
-            this.groupBoxRadio.ResumeLayout(false);
-            this.groupBoxRadio.PerformLayout();
+            this.groupBoxCityInfo.ResumeLayout(false);
+            this.groupBoxCityInfo.PerformLayout();
             this.groupBoxMap.ResumeLayout(false);
             this.groupBoxMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMarker)).EndInit();
@@ -1010,6 +1019,7 @@
         private System.Windows.Forms.TextBox textBoxMinPopulation;
         private System.Windows.Forms.Button buttonFilterOff;
         private System.Windows.Forms.Button buttonFilterOn;
+        private System.Windows.Forms.ToolStripMenuItem пошукToolStripMenuItem;
     }
 }
 

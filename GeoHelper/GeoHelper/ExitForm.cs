@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GeoHelper
 {
-    // Форма выхода из справочника.
+    // Форма виходу.
     public partial class ExitForm : Form
     {
-        // Сслыка на главную форму.
+        // Посилання на головну форму.
         private MainForm Main { get; set; }
         public ExitForm(MainForm main)
         {

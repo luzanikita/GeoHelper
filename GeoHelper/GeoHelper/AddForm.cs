@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace GeoHelper
 {
-    // Форма добавления новых элементов в справочник.
+    // Форма додавання нових елементів довідника.
     public partial class AddForm : Form
     {
-        // Ссылка на главну форму.
+        // Посилання на головну форму.
         private MainForm Main { get; set; }
         public AddForm(MainForm main)
         {
@@ -16,7 +16,7 @@ namespace GeoHelper
             Main = main;
         }
 
-        // Привязка источников данных к элементам формы.
+        // Додавання дзжжерел даних до елементів форми.
         private void AddForm_Load(object sender, EventArgs e)
         {
             comboBoxCityContinent.DataSource = Main.Helper.ContinentList;
@@ -36,7 +36,7 @@ namespace GeoHelper
             comboBoxGovForm.DataSource = governmentForms;
         }
 
-        // Отображения панели добавления города.
+        // Відображення панелі додавання міста.
         private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCountry.Visible = false;
@@ -44,7 +44,7 @@ namespace GeoHelper
             groupBoxContinent.Visible = false;
         }
 
-        // Отображения панели добавления страны.
+        // Відображення панелі додавання країни.
         private void radioButtonCountry_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCity.Visible = false;
@@ -52,7 +52,7 @@ namespace GeoHelper
             groupBoxContinent.Visible = false;
         }
 
-        // Отображения панели добавления континента. 
+        // Відображення панелі додавання континента.
         private void radioButtonContinent_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCity.Visible = false;
@@ -60,7 +60,7 @@ namespace GeoHelper
             groupBoxContinent.Visible = true;
         }
 
-        // Обработка и добавление в справочник введенных данных.
+        // Обробка та додавання введених даних у довідник.
         private void buttonOK_Click(object sender, EventArgs e)
         {
             if (radioButtonContinent.Checked &&
@@ -106,7 +106,7 @@ namespace GeoHelper
             }
         }
 
-        // Изменение отображения стран, при выборе соответствующего континента.
+        // Зміна відображення країн, при виборі відповідного континента.
         private void comboBoxCityContinent_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxCountry.DataSource = Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex].CountryList;
@@ -114,7 +114,7 @@ namespace GeoHelper
                 comboBoxCountry.Text = "";
         }
 
-        // Закрыть форму.
+        // Закрити форму.
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();

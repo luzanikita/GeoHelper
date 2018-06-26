@@ -1,1 +1,139 @@
-[{"Name":"Европа","Area":5162.16,"Population":22243007,"CountryList":[{"Name":"Украина","Area":1197.66,"Population":4384604,"Capital":{"Name":"Киев","Coordinates":[-30.31,50.27],"Area":847.66,"Population":2934522,"IsCapital":true},"Government":"Демократия","CityList":[{"Name":"Харьков","Coordinates":[-36.5,50.0],"Area":350.0,"Population":1450082,"IsCapital":false},{"Name":"Киев","Coordinates":[-30.31,50.27],"Area":847.66,"Population":2934522,"IsCapital":true}]},{"Name":"Россия","Area":3964.5,"Population":17858403,"Capital":{"Name":"Москва","Coordinates":[-37.37,55.45],"Area":2561.5,"Population":12506468,"IsCapital":true},"Government":"Диктатура","CityList":[{"Name":"Санкт-Петербург","Coordinates":[-30.19,59.57],"Area":1403.0,"Population":5351935,"IsCapital":false},{"Name":"Москва","Coordinates":[-37.37,55.45],"Area":2561.5,"Population":12506468,"IsCapital":true}]}]},{"Name":"Северная-Америка","Area":177.0,"Population":601723,"CountryList":[{"Name":"США","Area":177.0,"Population":601723,"Capital":{"Name":"Вашингтон","Coordinates":[77.02,38.53],"Area":177.0,"Population":601723,"IsCapital":true},"Government":"Демократия","CityList":[{"Name":"Вашингтон","Coordinates":[77.02,38.53],"Area":177.0,"Population":601723,"IsCapital":true}]}]},{"Name":"Атлантида","Area":17327.0,"Population":60123723,"CountryList":[{"Name":"Бездна","Area":17327.0,"Population":60123723,"Capital":{"Name":"Сокорляндия","Coordinates":[22.02,-18.53],"Area":17327.0,"Population":60123723,"IsCapital":true},"Government":"Монархия","CityList":[{"Name":"Сокорляндия","Coordinates":[22.02,-18.53],"Area":17327.0,"Population":60123723,"IsCapital":true}]}]},{"Name":"Антарктида","Area":1251334.0,"Population":1251334,"CountryList":[{"Name":"Хладик","Area":1251334.0,"Population":1251334,"Capital":{"Name":"Каштан","Coordinates":[0.0,-90.0],"Area":1251334.0,"Population":1251334,"IsCapital":true},"Government":"Коммунизм","CityList":[{"Name":"Каштан","Coordinates":[0.0,-90.0],"Area":1251334.0,"Population":1251334,"IsCapital":true}]}]},{"Name":"fgsfgsd","Area":0.0,"Population":0,"CountryList":[]}]
+[
+  {
+    "Name": "Європа",
+    "Area": 5162.16,
+    "Population": 22243007,
+    "CountryList": [
+      {
+        "Name": "Україна",
+        "Area": 1197.66,
+        "Population": 4384604,
+        "Capital": {
+          "Name": "Київ",
+          "Coordinates": [ -30.31, 50.27 ],
+          "Area": 847.66,
+          "Population": 2934522,
+          "IsCapital": true,
+          "Parent": "Україна"
+        },
+        "Government": "Демократія",
+        "CityList": [
+          {
+            "Name": "Харків",
+            "Coordinates": [ -36.5, 50.0 ],
+            "Area": 350.0,
+            "Population": 1450082,
+            "IsCapital": false,
+            "Parent": "Україна"
+          },
+          {
+            "Name": "Київ",
+            "Coordinates": [ -30.31, 50.27 ],
+            "Area": 847.66,
+            "Population": 2934522,
+            "IsCapital": true,
+            "Parent": "Україна"
+          }
+        ],
+        "Parent": "Європа"
+      },
+      {
+        "Name": "Росія",
+        "Area": 3964.5,
+        "Population": 17858403,
+        "Capital": {
+          "Name": "Москва",
+          "Coordinates": [ -37.37, 55.45 ],
+          "Area": 2561.5,
+          "Population": 12506468,
+          "IsCapital": true,
+          "Parent": "Росія"
+        },
+        "Government": "Диктатура",
+        "CityList": [
+          {
+            "Name": "Санкт-Петербург",
+            "Coordinates": [ -30.19, 59.57 ],
+            "Area": 1403.0,
+            "Population": 5351935,
+            "IsCapital": false,
+            "Parent": "Росія"
+          },
+          {
+            "Name": "Москва",
+            "Coordinates": [ -37.37, 55.45 ],
+            "Area": 2561.5,
+            "Population": 12506468,
+            "IsCapital": true,
+            "Parent": "Росія"
+          }
+        ],
+        "Parent": "Європа"
+      }
+    ]
+  },
+  {
+    "Name": "Північна-Америка",
+    "Area": 177.0,
+    "Population": 601723,
+    "CountryList": [
+      {
+        "Name": "США",
+        "Area": 177.0,
+        "Population": 601723,
+        "Capital": {
+          "Name": "Вашингтон",
+          "Coordinates": [ 77.02, 38.53 ],
+          "Area": 177.0,
+          "Population": 601723,
+          "IsCapital": true,
+          "Parent": "США"
+        },
+        "Government": "Демократія",
+        "CityList": [
+          {
+            "Name": "Вашингтон",
+            "Coordinates": [ 77.02, 38.53 ],
+            "Area": 177.0,
+            "Population": 601723,
+            "IsCapital": true,
+            "Parent": "США"
+          }
+        ],
+        "Parent": "Північна-Америка"
+      }
+    ]
+  },
+  {
+    "Name": "Атлантида",
+    "Area": 17327.0,
+    "Population": 60123723,
+    "CountryList": [
+      {
+        "Name": "Нептуландія",
+        "Area": 17327.0,
+        "Population": 60123723,
+        "Capital": {
+          "Name": "Дно",
+          "Coordinates": [ 22.02, -18.53 ],
+          "Area": 17327.0,
+          "Population": 60123723,
+          "IsCapital": true,
+          "Parent": "Нептуландія"
+        },
+        "Government": "Монархія",
+        "CityList": [
+          {
+            "Name": "Дно",
+            "Coordinates": [ 22.02, -18.53 ],
+            "Area": 17327.0,
+            "Population": 60123723,
+            "IsCapital": true,
+            "Parent": "Нептуландія"
+          }
+        ],
+        "Parent": "Атлантида"
+      }
+    ]
+  }
+]

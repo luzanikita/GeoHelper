@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GeoHelper
 {
-    // Класс, содержащий методы для валидации полейформ.
+    // Класс з методами валідації полей форм.
     class Validator
     {
         public static bool ValidName(TextBox field, bool required = false)
         {
-            string pattern = @"^[А-Я][а-я]+(['-]([А-Я][а-я]*)|([а-я]+))?$";
+            string pattern = @"^[А-ЯІЇҐ][а-яіїґ\'\-]+(['-]([А-ЯІЇҐ][а-яіїґ\'\-]*)|([а-яіїґ]+))?$";
             if (!required && field.Text == "" || Regex.IsMatch(field.Text, pattern))
             {
                 field.BackColor = Color.White;
                 return true;
             }
             field.BackColor = Color.Pink;
-            MessageBox.Show("Название может состоять только из букв кириллицы, дефиса и апострофа.\n" +
-                "Название состоит из одного слова длиной не меньше 2 символов.",
-                "Неправильно заполнены поля",
+            MessageBox.Show("Назва може складатися лише з літер української мови, дефісу та апострофа.\n" +
+                "Назва складається з одного слова довжиною не менше 2 символів.",
+                "Неправильно заповнені поля",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
             return false;
         }
 
-        // Валидация полей на содержание действительных чисел больше нуля.
+        // Валідація полей на наявність дійсних чисел більше за нуль.
         public static bool ValidDoubleField(TextBox field, bool required = false)
         {
             double x = 0;
@@ -42,14 +39,14 @@ namespace GeoHelper
                 }
             }
             field.BackColor = Color.Pink;
-            MessageBox.Show("Поля должны быть заполнены действительными числами больше нуля!",
-                "Неправильно заполнены поля",
+            MessageBox.Show("Поля повинні бути заповнені дійсними числами більше за нуль!",
+                "Неправильно заповнені поля",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
             return false;
         }
 
-        // Валидация полей на содержание целых чисе больше нуля.
+        // Валідація полів на наявність цілих чисел більше за нуль.
         public static bool ValidIntField(TextBox field, bool required = false)
         {
             int x = 0;
@@ -62,14 +59,14 @@ namespace GeoHelper
                 }
             }
                 field.BackColor = Color.Pink;
-                MessageBox.Show("Поля должны быть заполнены целыми числами больше нуля!",
-                    "Неправильно заполнены поля",
+                MessageBox.Show("Поля повинні бути заповнені цілими числами більше за нуль!",
+                    "Неправильно заповнені поля",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return false;
         }
 
-        // Валидация парных полей, описывающих диапазон действительных чисел.
+        // Валідація полів, що описують діапазон дійсних чисел.
         public static bool ValidDoubleMinMaxTextBox(TextBox minField, TextBox maxField, bool required = false)
         {
             double min = !required && minField.Text == "" ? -2 : 0;
@@ -87,14 +84,15 @@ namespace GeoHelper
             }
             minField.BackColor = Color.Pink;
             maxField.BackColor = Color.Pink;
-            MessageBox.Show("Поля должны быть заполнены действительными числами!\nМинимальное значение должно быть меньше либо равно максимальному!",
-                    "Неправильно заполнены поля",
+            MessageBox.Show("Поля повинні бути заповнені дійсними числами більше за нуль!\n" +
+                "Мінімальне значення повинно бути менше або рівним максимальному!",
+                    "Неправильно заповнені поля",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             return false;
         }
 
-        // Валидация парных полей, описывающих диапазон целых чисел.
+        // Валідація полів, що описують діапазон цілих чисел.
         public static bool ValidIntMinMaxTextBox(TextBox minField, TextBox maxField, bool required = false)
         {
             int min = !required && minField.Text == "" ? -2 : 0;
@@ -112,14 +110,15 @@ namespace GeoHelper
             }
             minField.BackColor = Color.Pink;
             maxField.BackColor = Color.Pink;
-            MessageBox.Show("Поля должны быть заполнены целыми числами!\nМинимальное значение должно быть меньше либо равно максимальному!",
-                    "Неправильно заполнены поля",
+            MessageBox.Show("Поля повинні бути заповнені цілими числами більше за нуль!!\n" +
+                "Мінімальне значення повинно бути менше або рівним максимальному!",
+                    "Неправильно заповнені поля",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             return false;
         }
 
-        // Валидация полей координат.
+        // Валідація полів з координатами.
         public static bool ValidCoordTextBox(TextBox field, bool required = false)
         {
             double x = 0;
@@ -132,17 +131,17 @@ namespace GeoHelper
                 }
             }
             field.BackColor = Color.Pink;
-            MessageBox.Show("Поля должны быть заполнены действительными числами!\n" +
-                "Значения координат должно быть в пределах от 0 до 90.\n" +
-                "Положительные значения отвечают за северную широту и западную долготу.\n" +
-                "Отрицательные значения отвечают за южную широту и восточную долготу.",
-                    "Неправильно заполнены поля",
+            MessageBox.Show("Поля повинні бути заповнені дійсними числами!\n" +
+                "Значення координат повинні бути у межах від -90 до 90.\n" +
+                "Додатні занчення відповідають північній широті та західній довготі.\n" +
+                "Від'ємні значення відповідають південній широті та східній довготі.",
+                    "Неправильно заповнені поля",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             return false;
         }
 
-        // Валидация полей с выбором из списка, на содержание
+        // Валідація полів з вибором зі списка.
         public static bool ValidComboBox<T>(ComboBox field)
         {
             List<T> data = (List<T>)field.DataSource;
@@ -155,8 +154,8 @@ namespace GeoHelper
                 }
             }
             field.BackColor = Color.Pink;
-            MessageBox.Show("Значение поля должно существовать в списке",
-                    "Неправильно заполнены поля",
+            MessageBox.Show("Значення поля повинно існувати у списку.",
+                    "Неправильно заповнені поля",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             return false;

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace GeoHelper
 {
-    // Класс описывающий элемент типа континента.
+    // Класс описывающий элемент типа континента. Класс, що описує елемент типу континента.
     public class Continent
     {
-        // Название континента.
+        // Назва континента.
         public string Name { get; private set; }
-        // Площадь континента.
+        // Площа континента.
         public double Area { get; private set; }
-        // Количество населения континента.
+        // Кількість населення континента.
         public int Population { get; private set; }
-        // Список стран, которые относятся к этому континенту.
+        // Список країн, що відносяться до цього континента.
         public List<Country> CountryList { private set; get; }
 
         public Continent(string name)
@@ -21,7 +21,7 @@ namespace GeoHelper
             CountryList = new List<Country> { };
         }
 
-        // Обновить значения площади и населения, посчитав сумму площадей и населения стран этого континета.
+        // Оновити інформацію про континент на основі інформації про його країни.
         public void Update()
         {
             Area = 0;
@@ -34,25 +34,26 @@ namespace GeoHelper
             }
         }
 
-        // Добавить в список стран этого континента новую страну.
+        // Додати до списку країн цього континенту нову країну.
         public void Add(string name, string government)
         {
-            CountryList.Add(new Country(name, government));
+            CountryList.Add(new Country(name, government, this.ToString()));
         }
 
-        // Удалить из списка стран этого континента указанную страну.
+        // Видалити зі списку країн цього континенту країну.
         public Country Remove(Country country)
         {
             CountryList.Remove(country);
             return country;
         }
 
-        // Изменить название континента, если параметры не заданы, то не изменять.
+        // Змінити країну зі списку країн цього континенту. За замовчуванням не змінювати.
         public void Edit(string name = "")
         {
             Name = name == "" ? Name : name;
         }
 
+        // Представлення об'єкту за його назвою.
         public override string ToString()
         {
             return Name;

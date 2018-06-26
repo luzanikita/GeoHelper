@@ -6,10 +6,10 @@ using System.Windows.Forms;
 
 namespace GeoHelper
 {
-    // Главная форма справочника.
+    // Головна форма довідника.
     public partial class MainForm : Form
     {
-        // Ссылка на справочник.
+        // Посилання на довідник.
         public Companion Helper { get; set; }
         private bool Filter { get; set; }
         public MainForm()
@@ -24,13 +24,13 @@ namespace GeoHelper
             UpdateInfo();
         }
 
-        // Обновление источников данных элементов формы и отображение информации о выбраных элементах.
+        // Оновлення джерел даних елементів форми та відображення інформації вибраних елементів.
         public void UpdateInfo()
         {
             UpdateContinentSource();
         }
 
-        // Обновление информации о континентах.
+        // Оноволення інформації про континенти.
         public void UpdateContinentInfo(Continent continent)
         {
             if(continent == null)
@@ -43,11 +43,11 @@ namespace GeoHelper
             {
                 continentName.Text = continent.Name;
                 continentArea.Text = $"{continent.Area} км²";
-                continentPopulation.Text = $"{continent.Population} чел.";
+                continentPopulation.Text = $"{continent.Population} ос.";
             }
         }
 
-        // Обновление источников данных континентов.
+        // Оновлення джерел даних континентів.
         public void UpdateContinentSource()
         {
             listBoxContinent.DataSource = new List<Continent> { };
@@ -56,11 +56,11 @@ namespace GeoHelper
             {
                 if (Filter)
                 {
-                    if (comboBoxSort.Text == "Алфавит")
+                    if (comboBoxSort.Text == "Абетка")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
-                    else if (comboBoxSort.Text == "Площадь")
+                    else if (comboBoxSort.Text == "Площа")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
-                    else if (comboBoxSort.Text == "Население")
+                    else if (comboBoxSort.Text == "Населення")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
                 }
                 listBoxContinent.DataSource = (Filter && comboBoxGeoType.Text == "Континент") ?
@@ -80,7 +80,7 @@ namespace GeoHelper
             }
         }
 
-        // Обновление информации о странах.
+        // Оноволення інформації про країни.
         public void UpdateCountryInfo(Country country)
         {
             if (country == null)
@@ -93,16 +93,15 @@ namespace GeoHelper
             }
             else
             {
-                countryName.Text = country.Name != null ? country.Name : "-";
-                countryCapital.Text = country.Capital != null ? country.Capital.Name : "-";
+                countryName.Text = $"{country.Name} ({country.Parent})";
+                countryCapital.Text = country.Capital.Name;
                 countryArea.Text = $"{country.Area} км²";
-                countryPopulation.Text = $"{country.Population} чел.";
+                countryPopulation.Text = $"{country.Population} ос.";
                 countryGovernment.Text = country.Government;
-            }
-                
+            } 
         }
 
-        // Обновление источников данных о странах.
+        // Оновлення джерел даних країн.
         public void UpdateCountrySource(Continent continent)
         {
             listBoxCountry.DataSource = new List<Country> { };
@@ -111,15 +110,15 @@ namespace GeoHelper
             {
                 if (Filter)
                 {
-                    if (comboBoxSort.Text == "Алфавит")
+                    if (comboBoxSort.Text == "Абетка")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
-                    else if (comboBoxSort.Text == "Площадь")
+                    else if (comboBoxSort.Text == "Площа")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
-                    else if (comboBoxSort.Text == "Население")
+                    else if (comboBoxSort.Text == "Населення")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
                 }
                 
-                listBoxCountry.DataSource = (Filter && comboBoxGeoType.Text == "Страна") ?
+                listBoxCountry.DataSource = (Filter && comboBoxGeoType.Text == "Країна") ?
                     CountryFilter(continent) : continent.CountryList;
                 if(listBoxCountry.Items.Count > 0)
                     listBoxCountry.SelectedIndex = 0;
@@ -136,20 +135,20 @@ namespace GeoHelper
             }
         }
 
-        // Обновление информации о городах.
+        // Оноволення інформації про міста.
         public void UpdateCityInfo(City city)
         {
             if(city != null)
             { 
-                cityName.Text = city.Name;
-                string longitude = city.Coordinates[0] > 0 ? "з.д." : "в.д.";
-                string latitude = city.Coordinates[1] > 0 ? "с.ш." : "ю.ш.";
+                cityName.Text = $"{city.Name} ({city.Parent})";
+                string longitude = city.Coordinates[0] > 0 ? "з.д." : "с.д.";
+                string latitude = city.Coordinates[1] > 0 ? "пн.ш." : "пд.ш.";
                 cityCoordinates.Text =
                     $"{Math.Abs(city.Coordinates[0])}° {longitude} " +
                     $"{Math.Abs(city.Coordinates[1])}° {latitude} ";
                 cityArea.Text = $"{city.Area} км²";
-                cityPopulation.Text = $"{city.Population} чел.";
-                cityIsCapital.Text = city.IsCapital ? "Да" : "Нет";
+                cityPopulation.Text = $"{city.Population} ос.";
+                cityIsCapital.Text = city.IsCapital ? "Так" : "Ні";
 
                 int x = Convert.ToInt32((pictureBoxMap.Width + pictureBoxMap.Width / 2
                     - 1.5 * city.Coordinates[0] + 3) % pictureBoxMap.Width);
@@ -168,10 +167,9 @@ namespace GeoHelper
 
                 pictureBoxMarker.Visible = false;
             }
-            
         }
 
-        // Обновление источников данных городов.
+        // Оновлення джерел даних міст.
         public void UpdateCitySource(Country country)
         {
             listBoxCity.DataSource = new List<City> { };
@@ -180,15 +178,15 @@ namespace GeoHelper
             {
                 if (Filter)
                 {
-                    if (comboBoxSort.Text == "Алфавит")
+                    if (comboBoxSort.Text == "Абетка")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Name.CompareTo(emp2.Name));
-                    else if (comboBoxSort.Text == "Площадь")
+                    else if (comboBoxSort.Text == "Площа")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Area.CompareTo(emp2.Area));
-                    else if (comboBoxSort.Text == "Население")
+                    else if (comboBoxSort.Text == "Населення")
                         Helper.ContinentList.Sort((emp1, emp2) => emp1.Population.CompareTo(emp2.Population));
                 }
 
-                listBoxCity.DataSource = (Filter && comboBoxGeoType.Text == "Город") ?
+                listBoxCity.DataSource = (Filter && comboBoxGeoType.Text == "Місто") ?
                     CityFilter(country) : country.CityList;
                 if(listBoxCity.Items.Count > 0)
                     listBoxCity.SelectedIndex = 0;
@@ -199,7 +197,7 @@ namespace GeoHelper
                 UpdateCityInfo(null);
         }
 
-        // Отображение панели с информацией о городе.
+        // Відображення панелі з інформацією про місто.
         private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCountryInfo.Visible = false;
@@ -207,7 +205,7 @@ namespace GeoHelper
             groupBoxContinentInfo.Visible = false;
         }
 
-        // Отображение панели с информацией о стране.
+        // Відображення панелі з інформацією про країну.
         private void radioButtonCountry_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCityInfo.Visible = false;
@@ -215,7 +213,7 @@ namespace GeoHelper
             groupBoxContinentInfo.Visible = false;
         }
 
-        // Отображение панели с информацией о континенте.
+        // Відображення панелі з інформацією про континент.
         private void radioButtonContinent_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCityInfo.Visible = false;
@@ -223,7 +221,7 @@ namespace GeoHelper
             groupBoxContinentInfo.Visible = true;
         }
 
-        // Выбор файла для сохранения.
+        // Вибор файлу для збереження.
         private void SaveFile()
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -237,13 +235,13 @@ namespace GeoHelper
             save.RestoreDirectory = false;
         }
        
-        // Сохранить информацию.
+        // Збереження інформації.
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFile();
         }
 
-        // Изменение отображения информации при выборе континента.
+        // Зміна відображення інформації та оновлення джерел даних при виборі континента.
         private void listBoxContinent_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(listBoxContinent.Items.Count > 0)
@@ -258,7 +256,7 @@ namespace GeoHelper
             }
         }
 
-        // Изменение отображения информации и обновление источников данных при выборе города.
+        // Зміна відображення інформації та оновлення джерел даних при виборі міста.
         private void listBoxCity_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxCity.Items.Count > 0)
@@ -272,7 +270,7 @@ namespace GeoHelper
             
         }
 
-        // Изменение отображения информации и обновление источников данных при выборе страны.
+        // Зміна відображення інформації та оновлення джерел даних при виборі країни.
         private void listBoxCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(listBoxCountry.Items.Count > 0)
@@ -285,25 +283,34 @@ namespace GeoHelper
                 UpdateCountryInfo(null);
                 UpdateCitySource(null);
             }
-            
         }
 
-        // Загрузить данные из файла.
+        // Завантажити дані з файла.
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            string path = Path.GetFullPath("x");
-            path = path.Substring(0, path.Length - 11) + "Data";
-            open.Filter = "json files (*.json)|*.json";
-            open.InitialDirectory = path;
-            open.ShowDialog();
-            Helper.Open(open.FileName);
-            open.RestoreDirectory = false;
-            Helper.Update();
-            UpdateInfo();
+            try
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                string path = Path.GetFullPath("x");
+                path = path.Substring(0, path.Length - 11) + "Data";
+                open.Filter = "json files (*.json)|*.json";
+                open.InitialDirectory = path;
+                open.ShowDialog();
+                Helper.Open(open.FileName);
+                open.RestoreDirectory = false;
+                Helper.Update();
+                UpdateInfo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неможливо завантажити дані з цього файлу!",
+                    "Помилка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
-        // При выходе из программы открыть форму закрытия, которая предлагает сохранить данные перед закрытием.
+        // Перед виходом з програми відкрити форму збереження даних.
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ExitForm exitForm = new ExitForm(this);
@@ -314,13 +321,13 @@ namespace GeoHelper
                 SaveFile();
         }
 
-        // Выход из программы.
+        // Вихід з програми.
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // Открыть форму добавления новых элементов в справочник.
+        // Відкрити форму додавання нових елементів довідника.
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filter = false;
@@ -329,7 +336,7 @@ namespace GeoHelper
             addForm.ShowDialog();
         }
 
-        // Открыть форму удаления элементов справочника.
+        // Відкрити форму видалення елементів довідника.
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -342,14 +349,14 @@ namespace GeoHelper
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Вы не можете удалить элементы, которых нет!",
-                    "Ошибка",
+                MessageBox.Show("Неможливо видалити елементи, яких не існує!",
+                    "Помилка",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
 
-        // Открыть форму изменения элементов справочника.
+        // Відкрити форму зміни елементів довідника.
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -362,14 +369,14 @@ namespace GeoHelper
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Вы не можете изменить элементы, которых нет!",
-                    "Ошибка",
+                MessageBox.Show("Неможливо змінити елементи, яких не існує!",
+                    "Помилка",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
 
-        // Отобразить континенты согласно фильтрам.
+        // Відображення континентів відповідно фільтрам.
         private List<Continent> ContinentFilter()
         {
             double minArea = textBoxMinArea.Text == "" ? -2 : Convert.ToDouble(textBoxMinArea.Text);
@@ -391,7 +398,7 @@ namespace GeoHelper
             return filtered;
         }
 
-        // Отобразить страны согласно фильтрам.
+        // Відображення країн відповідно фільтрам.
         private List<Country> CountryFilter(Continent continent)
         {
             double minArea = textBoxMinArea.Text == "" ? -2 : Convert.ToDouble(textBoxMinArea.Text);
@@ -414,7 +421,7 @@ namespace GeoHelper
             return filtered;
         }
 
-        // Отобразить города согласно фильтрам.
+        // Відображення міст відповідно фільтрам.
         private List<City> CityFilter(Country country)
         {
             double minArea = textBoxMinArea.Text == "" ? -2 : Convert.ToDouble(textBoxMinArea.Text);
@@ -437,7 +444,7 @@ namespace GeoHelper
             return filtered;
         }
 
-        // Применить фильтры
+        // Застосувати фільтри.
         private void buttonFilterOn_Click(object sender, EventArgs e)
         {
             if (Validator.ValidIntMinMaxTextBox(textBoxMinPopulation, textBoxMaxPopulation) &&
@@ -449,7 +456,7 @@ namespace GeoHelper
             }
         }
 
-        // Сбросить фильтры
+        // Скасувати фільтри.
         private void buttonFilterOff_Click(object sender, EventArgs e)
         {
             comboBoxGeoType.Text = "";
@@ -464,6 +471,12 @@ namespace GeoHelper
             textBoxMaxPopulation.BackColor = Color.White;
             Filter = false;
             UpdateInfo();
+        }
+
+        private void пошукToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchForm form = new SearchForm(this);
+            form.ShowDialog();
         }
     }
 }
