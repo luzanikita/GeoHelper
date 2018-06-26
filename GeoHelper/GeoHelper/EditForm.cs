@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GeoHelper
 {
-    // Форма изменения данных справочника.
+    // Форма зміни даних довідника.
     public partial class EditForm : Form
     {
-        // Ссылка на главную форму.
+        // Посилання на головну форму.
         private MainForm Main { get; set; }
 
         public EditForm(MainForm main)
@@ -23,7 +17,7 @@ namespace GeoHelper
             Main = main;
         }
 
-        // Привязка источников данных к элементам формы.
+        // Додавання джерел даних до елементів форми.
         private void EditForm_Load(object sender, EventArgs e)
         {
             comboBoxCityContinent.DataSource = Main.Helper.ContinentList;
@@ -43,7 +37,7 @@ namespace GeoHelper
             comboBoxGovForm.DataSource = governmentForms;
         }
 
-        // Привязка данных о странах.
+        // Додавання джерел даних країн.
         private void UpdateCountryInfo()
         {
             if (Main.Helper.ContinentList.Count > 0)
@@ -86,7 +80,7 @@ namespace GeoHelper
             }
         }
 
-        // Привязка данных о городах.
+        // Додавання джерел даних міст.
         private void UpdateCityInfo()
         {
             if (comboBoxCityCountry.SelectedIndex >= 0 &&
@@ -108,7 +102,7 @@ namespace GeoHelper
             }
         }
 
-        // Отображение панели изменения континентов.
+        // Відображення панелі зміни континентів.
         private void radioButtonContinent_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCountry.Visible = false;
@@ -116,7 +110,7 @@ namespace GeoHelper
             groupBoxContinent.Visible = true;
         }
 
-        // Отображение панели изменения стран.
+        // Відображення панелі зміни країн.
         private void radioButtonCountry_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCity.Visible = false;
@@ -124,7 +118,7 @@ namespace GeoHelper
             groupBoxContinent.Visible = false;
         }
 
-        // Отображения панели изменения городов.
+        // Відображення панелі зміни міст.
         private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
         {
             groupBoxCity.Visible = true;
@@ -132,7 +126,7 @@ namespace GeoHelper
             groupBoxContinent.Visible = false;
         }
 
-        // Обработка и изменение введенных данных справочника.
+        // Обробка та зміна обраних даних довідника.
         private void buttonOK_Click(object sender, EventArgs e)
         {
             if (radioButtonContinent.Checked &&
@@ -175,37 +169,46 @@ namespace GeoHelper
 
                 Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
                     .CountryList[comboBoxCityCountry.SelectedIndex]
+                    .Capital
+                    .Edit("",
+                        new double[] { 404, 404 },
+                        -1,
+                        -1,
+                        !checkBoxIsCapital.Checked);
+
+                Main.Helper.ContinentList[comboBoxCityContinent.SelectedIndex]
+                    .CountryList[comboBoxCityCountry.SelectedIndex]
                     .CityList[comboBoxCity.SelectedIndex]
                     .Edit(textBoxCityName.Text,
                         new double[] { longitude, latitude},
                         area,
                         population,
                         checkBoxIsCapital.Checked);
+
                 Main.Helper.Update();
                 Main.UpdateInfo();
                 Close();
             }
         }
 
-        // Закрыть форму.
+        // Закрити форму.
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        // Изменение списка стран, при выборе соответствующего континента на панели изменения городов.
+        // Зміна списків країн та міст, при виборі відповідного континента на панелі зміни міст.
         private void comboBoxCityContinent_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCountryInfo();
         }
 
-        // Изменение списка городов, при выборе соответствующей страны на панели изменения городов.
+        // Зміна списку міст, при виборі відповідної країни на панелі зміни міст.
         private void comboBoxCityCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCityInfo();
         }
 
-        // Изменение списка стран, при выборе соответствующего континента на панели изменения стран.
+        // Зміна списку країн, при виборі відповідного континента на панелі зміни країн.
         private void comboBoxCountryContinent_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCountryInfo();

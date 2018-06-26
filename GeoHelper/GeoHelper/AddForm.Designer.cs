@@ -111,18 +111,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(201, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Город";
+            this.label3.Text = "Місто";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(110, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Страна";
+            this.label2.Text = "Країна";
             // 
             // radioButtonCountry
             // 
@@ -232,9 +232,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 50);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 13);
+            this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 26;
-            this.label11.Text = "Страна:";
+            this.label11.Text = "Країна:";
             // 
             // comboBoxCountry
             // 
@@ -253,7 +253,7 @@
             // checkBoxIsCapital
             // 
             this.checkBoxIsCapital.AutoSize = true;
-            this.checkBoxIsCapital.Location = new System.Drawing.Point(116, 181);
+            this.checkBoxIsCapital.Location = new System.Drawing.Point(96, 181);
             this.checkBoxIsCapital.Name = "checkBoxIsCapital";
             this.checkBoxIsCapital.Size = new System.Drawing.Size(15, 14);
             this.checkBoxIsCapital.TabIndex = 8;
@@ -285,18 +285,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 77);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.Size = new System.Drawing.Size(42, 13);
             this.label8.TabIndex = 19;
-            this.label8.Text = "Название:";
+            this.label8.Text = "Назва:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 181);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 13);
+            this.label7.Size = new System.Drawing.Size(84, 13);
             this.label7.TabIndex = 18;
-            this.label7.Text = "Является столицей:";
+            this.label7.Text = "Статус столиці:";
             // 
             // label6
             // 
@@ -305,16 +305,16 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 17;
-            this.label6.Text = "Население:";
+            this.label6.Text = "Населення:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 103);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Площадь:";
+            this.label5.Text = "Площа:";
             // 
             // label4
             // 
@@ -323,7 +323,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Долгота:";
+            this.label4.Text = "Довгота:";
             // 
             // buttonOK
             // 
@@ -344,7 +344,7 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(126, 28);
             this.buttonCancel.TabIndex = 10;
-            this.buttonCancel.Text = "Отмена";
+            this.buttonCancel.Text = "Закрити";
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
@@ -385,9 +385,9 @@
             // comboBoxGovForm
             // 
             this.comboBoxGovForm.FormattingEnabled = true;
-            this.comboBoxGovForm.Location = new System.Drawing.Point(135, 72);
+            this.comboBoxGovForm.Location = new System.Drawing.Point(114, 72);
             this.comboBoxGovForm.Name = "comboBoxGovForm";
-            this.comboBoxGovForm.Size = new System.Drawing.Size(120, 21);
+            this.comboBoxGovForm.Size = new System.Drawing.Size(141, 21);
             this.comboBoxGovForm.TabIndex = 3;
             // 
             // textBoxCountryName
@@ -402,18 +402,18 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 49);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Название:";
+            this.label9.Text = "Назва:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 74);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(132, 13);
+            this.label10.Size = new System.Drawing.Size(102, 13);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Форма гос. управления:";
+            this.label10.Text = "Форма держ. упр.:";
             // 
             // groupBoxContinent
             // 
@@ -438,9 +438,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 23);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 13);
+            this.label14.Size = new System.Drawing.Size(42, 13);
             this.label14.TabIndex = 19;
-            this.label14.Text = "Название:";
+            this.label14.Text = "Назва:";
             // 
             // companionBindingSource
             // 
@@ -451,10 +451,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 355);
+            this.Controls.Add(this.groupBoxContinent);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.groupBoxRadio);
-            this.Controls.Add(this.groupBoxContinent);
             this.Controls.Add(this.groupBoxCountry);
             this.Controls.Add(this.groupBoxCity);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -463,7 +463,7 @@
             this.MinimizeBox = false;
             this.Name = "AddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Добавить";
+            this.Text = "Додати";
             this.Load += new System.EventHandler(this.AddForm_Load);
             this.groupBoxRadio.ResumeLayout(false);
             this.groupBoxRadio.PerformLayout();

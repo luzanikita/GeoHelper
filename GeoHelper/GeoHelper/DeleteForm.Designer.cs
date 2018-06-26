@@ -45,10 +45,10 @@
             this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelCity = new System.Windows.Forms.Label();
-            this.labelCountry = new System.Windows.Forms.Label();
             this.labelContinent = new System.Windows.Forms.Label();
             this.comboBoxCity = new System.Windows.Forms.ComboBox();
             this.countryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.labelCountry = new System.Windows.Forms.Label();
             this.groupBoxRadio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.continentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
@@ -64,7 +64,7 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(126, 28);
             this.buttonCancel.TabIndex = 5;
-            this.buttonCancel.Text = "Отмена";
+            this.buttonCancel.Text = "Закрити";
             this.buttonCancel.UseVisualStyleBackColor = false;
             // 
             // buttonOK
@@ -111,18 +111,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(201, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Город";
+            this.label3.Text = "Місто";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(110, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Страна";
+            this.label2.Text = "Країна";
             // 
             // radioButtonCountry
             // 
@@ -208,20 +208,10 @@
             this.labelCity.AutoSize = true;
             this.labelCity.Location = new System.Drawing.Point(15, 71);
             this.labelCity.Name = "labelCity";
-            this.labelCity.Size = new System.Drawing.Size(37, 13);
+            this.labelCity.Size = new System.Drawing.Size(35, 13);
             this.labelCity.TabIndex = 33;
-            this.labelCity.Text = "Город";
+            this.labelCity.Text = "Місто";
             this.labelCity.Visible = false;
-            // 
-            // labelCountry
-            // 
-            this.labelCountry.AutoSize = true;
-            this.labelCountry.Location = new System.Drawing.Point(15, 44);
-            this.labelCountry.Name = "labelCountry";
-            this.labelCountry.Size = new System.Drawing.Size(43, 13);
-            this.labelCountry.TabIndex = 32;
-            this.labelCountry.Text = "Страна";
-            this.labelCountry.Visible = false;
             // 
             // labelContinent
             // 
@@ -248,6 +238,16 @@
             // 
             this.countryBindingSource1.DataSource = typeof(GeoHelper.Country);
             // 
+            // labelCountry
+            // 
+            this.labelCountry.AutoSize = true;
+            this.labelCountry.Location = new System.Drawing.Point(15, 44);
+            this.labelCountry.Name = "labelCountry";
+            this.labelCountry.Size = new System.Drawing.Size(41, 13);
+            this.labelCountry.TabIndex = 32;
+            this.labelCountry.Text = "Країна";
+            this.labelCountry.Visible = false;
+            // 
             // DeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,7 +263,7 @@
             this.MinimizeBox = false;
             this.Name = "DeleteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Удалить";
+            this.Text = "Видалити";
             this.Load += new System.EventHandler(this.DeleteForm_Load);
             this.groupBoxRadio.ResumeLayout(false);
             this.groupBoxRadio.PerformLayout();
@@ -291,11 +291,11 @@
         private System.Windows.Forms.ComboBox comboBoxCountry;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelCity;
-        private System.Windows.Forms.Label labelCountry;
         private System.Windows.Forms.Label labelContinent;
         private System.Windows.Forms.ComboBox comboBoxCity;
         private System.Windows.Forms.BindingSource continentBindingSource;
         private System.Windows.Forms.BindingSource countryBindingSource;
         private System.Windows.Forms.BindingSource countryBindingSource1;
+        private System.Windows.Forms.Label labelCountry;
     }
 }

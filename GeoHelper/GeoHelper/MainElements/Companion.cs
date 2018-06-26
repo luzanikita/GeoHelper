@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 
 namespace GeoHelper
 {
-    // Класс описывающий справочник, с которым работает пользователь.
+    // Класс, що описує довідник, з яким працює користувач.
     public class Companion
     {
-        // Список континентов, которые содержит справочник.
+        // Список континентів, які містить цей довідник.
         public List<Continent> ContinentList { get; set; }
         
         public Companion()
@@ -15,20 +15,20 @@ namespace GeoHelper
             ContinentList = new List<Continent> { };
         }
 
-        // Добавть в список континентов новый континент с указанным названием.
+        // Додати у довідник новий континент.
         public void Add(string name)
         {
             ContinentList.Add(new Continent(name));
         }
 
-        // Удалить из списка континентов указанный континент
+        // Видалити з довідник континент.
         public Continent Remove(Continent continent)
         {
             ContinentList.Remove(continent);
             return continent;
         }
 
-        // Обновить всю информацию о континентах.
+        // Оновити інформацію континентів, які містяться у цьому довіднику.
         public void Update()
         {
             foreach(Continent continent in ContinentList)
@@ -37,7 +37,7 @@ namespace GeoHelper
             }
         }
 
-        // Сохранить информацию справочника в файл.
+        // Зберегти інформацію довідника у файл.
         public void Save(string fileName)
         {
             Update();
@@ -45,11 +45,14 @@ namespace GeoHelper
             File.WriteAllText(fileName, json);
         }
 
-        // Загрузить информацию в справочник из файла.
+        // Завантажити інформацію у довідник з файлу.
         public void Open(string fileName)
         {
-            string json = File.ReadAllText(fileName);
-            ContinentList = JsonConvert.DeserializeObject<List<Continent>>(json);
+            if (fileName != "")
+            { 
+                string json = File.ReadAllText(fileName);
+                ContinentList = JsonConvert.DeserializeObject<List<Continent>>(json);
+            }
         }
     }
 }

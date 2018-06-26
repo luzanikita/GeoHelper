@@ -1,29 +1,32 @@
 ﻿namespace GeoHelper
 {
-    // Класс описывающий элемент типа города.
+    // Класс, що описує елемент типу міста.
     public class City
     {
-        // Название города.
+        // Назва міста.
         public string Name { get; private set; }
-        // Координаты города.
+        // Координати міста.
         public double[] Coordinates { get; private set; }
-        // Площадь города.
+        // Площа міста.
         public double Area { get; private set; }
-        // Количество населения города.
+        // Кількість населення міста.
         public int Population { get; private set; }
-        // Является ли город столицей.
+        // Чи є місто столицею.
         public bool IsCapital { get; private set; }
+        // Країна, до якої відноситься місто.
+        public string Parent { get; set; }
 
-        public City(string name, double[] coordinates, double area, int population, bool isCapital)
+        public City(string name, double[] coordinates, double area, int population, bool isCapital, string parent)
         {
             Name = name;
             Coordinates = coordinates;
             Area = area;
             Population = population;
             IsCapital = isCapital;
+            Parent = parent;
         }
 
-        // Изменения полей обьекта, если параметры не были указаны, то изменение не происходит. 
+        // Зміна параметрів міста. За замовчуванням не змінювати.
         public void Edit(string name = "", double[] coordinates = null, double area = -1, int population = -1, bool isCapital = false)
         {
             Name = name == "" ? Name : name;
@@ -34,6 +37,7 @@
             IsCapital = isCapital;
         }
 
+        // Представлення об'єкту за його назвою.
         public override string ToString()
         {
             return Name;

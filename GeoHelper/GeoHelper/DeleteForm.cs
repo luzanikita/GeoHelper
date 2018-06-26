@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GeoHelper
 {
-    // Форма удаления элементов из формы.
+    // Форма видалення елементів довідника.
     public partial class DeleteForm : Form
     {
-        // Ссылка на главную форму.
+        // Посилання на головну форму.
         private MainForm Main { get; set; }
         public DeleteForm(MainForm main)
         {
@@ -21,7 +21,7 @@ namespace GeoHelper
             Main = main;
         }
 
-        // Привязка источников данных к элементам формы.
+        // Додавання джерел даних до елементів форми.
         private void DeleteForm_Load(object sender, EventArgs e)
         {
             try
@@ -36,7 +36,7 @@ namespace GeoHelper
             }
         }
 
-        // Привязка данных о странах.
+        // Додавання джерел даних країн.
         private void UpdateCountryInfo()
         {
             if (radioButtonCountry.Checked || radioButtonCity.Checked)
@@ -63,7 +63,7 @@ namespace GeoHelper
             }
         }
 
-        // Привязка данных о городах.
+        // Додавання джерел даних міст.
         private void UpdateCityInfo()
         {
             if (radioButtonCity.Checked)
@@ -87,19 +87,19 @@ namespace GeoHelper
             }
         }
 
-        // Изменение списка стран, при выборе соответствующего континента.
+        // Зміна списку країн та міст, при виборі відповідного континента.
         private void comboBoxContinent_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCountryInfo();
         }
 
-        // Изменение списка городов, при выборе соответсвующей страны.
+        // Зміна списку міст, при виборі відповідної країни.
         private void comboBoxCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateCityInfo();
         }
 
-        // Обработка и удаление введенных данных из справочника.
+        // Обробка та видалення обраних даних довідника.
         private void buttonOK_Click(object sender, EventArgs e)
         {
             try
@@ -141,14 +141,14 @@ namespace GeoHelper
             }
             catch(Exception)
             {
-                MessageBox.Show("Убедитесь, что все поля заполнены правильно.\nВ списках должны быть указаны существующие элементы.",
+                MessageBox.Show("Переконайтесь, що всі поля заповнені правильно.\nУ списках повинні бути вказані тільки існуючі елементи.",
                "Неправильно заполнены поля",
                MessageBoxButtons.OK,
                MessageBoxIcon.Warning);
             }
         }
 
-        // Отобразить соответстующие поля для удаления страны.
+        // Відображення відповідних полів для видалення країни.
         private void radioButtonCountry_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxCity.Visible = false;
@@ -157,7 +157,7 @@ namespace GeoHelper
             labelCountry.Visible = true;
         }
 
-        // Отобразить соответствующие поля для удаления города.
+        // Відображення відповідних полів для видалення міста.
         private void radioButtonCity_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxCity.Visible = true;
@@ -166,7 +166,7 @@ namespace GeoHelper
             labelCountry.Visible = true;
         }
 
-        // Отобразить соответствующие поля для удаления континента.
+        // Відображення відповідних полів для видалення континента.
         private void radioButtonContinent_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxCity.Visible = false;
