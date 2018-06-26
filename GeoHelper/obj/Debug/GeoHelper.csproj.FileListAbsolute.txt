@@ -1,0 +1,50 @@
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\bin\Debug\GeoHelper.exe.config
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\bin\Debug\GeoHelper.exe
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\bin\Debug\GeoHelper.pdb
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.Properties.Resources.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.GenerateResource.Cache
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.CoreCompileInputs.cache
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.exe
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.pdb
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.MainForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\bin\Debug\Newtonsoft.Json.dll
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\bin\Debug\Newtonsoft.Json.xml
+E:\GeoHelper\GeoHelper\bin\Debug\GeoHelper.exe.config
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.exe
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.pdb
+E:\GeoHelper\GeoHelper\bin\Debug\GeoHelper.exe
+E:\GeoHelper\GeoHelper\bin\Debug\GeoHelper.pdb
+E:\GeoHelper\GeoHelper\bin\Debug\Newtonsoft.Json.dll
+E:\GeoHelper\GeoHelper\bin\Debug\Newtonsoft.Json.xml
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csprojResolveAssemblyReference.cache
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.MainForm.resources
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.Properties.Resources.resources
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.GenerateResource.Cache
+E:\GeoHelper\GeoHelper\Data\GeoHelper.exe.config
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.AddForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.DeleteForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.ExitForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.EditForm.resources
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.AddForm.resources
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.DeleteForm.resources
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.EditForm.resources
+E:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.ExitForm.resources
+F:\GeoHelper\GeoHelper\bin\Debug\GeoHelper.exe.config
+F:\GeoHelper\GeoHelper\bin\Debug\GeoHelper.exe
+F:\GeoHelper\GeoHelper\bin\Debug\GeoHelper.pdb
+F:\GeoHelper\GeoHelper\bin\Debug\Newtonsoft.Json.dll
+F:\GeoHelper\GeoHelper\bin\Debug\Newtonsoft.Json.xml
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csprojResolveAssemblyReference.cache
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.AddForm.resources
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.DeleteForm.resources
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.EditForm.resources
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.ExitForm.resources
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.MainForm.resources
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.Properties.Resources.resources
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.GenerateResource.Cache
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.CoreCompileInputs.cache
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.exe
+F:\GeoHelper\GeoHelper\obj\Debug\GeoHelper.pdb
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.SearchForm.resources
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csprojAssemblyReference.cache
+D:\NURE\2 Семестр\ООП\GeoHelper\GeoHelper\obj\Debug\GeoHelper.csproj.CopyComplete
